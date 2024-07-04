@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/plugins/Layer_Atlas" >
+        <file>icon.png</file>
+    </qresource>
+</RCC>

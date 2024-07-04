@@ -1,0 +1,1417 @@
+[
+    {
+        "label": "sys,",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys.",
+        "description": "sys.",
+        "detail": "sys.",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "tempfile",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "tempfile",
+        "description": "tempfile",
+        "detail": "tempfile",
+        "documentation": {}
+    },
+    {
+        "label": "QgsProject",
+        "importPath": "qgis.core",
+        "description": "qgis.core",
+        "isExtraImport": true,
+        "detail": "qgis.core",
+        "documentation": {}
+    },
+    {
+        "label": "QgsLayerDefinition",
+        "importPath": "qgis.core",
+        "description": "qgis.core",
+        "isExtraImport": true,
+        "detail": "qgis.core",
+        "documentation": {}
+    },
+    {
+        "label": "QgsSettings",
+        "importPath": "qgis.core",
+        "description": "qgis.core",
+        "isExtraImport": true,
+        "detail": "qgis.core",
+        "documentation": {}
+    },
+    {
+        "label": "QgsMapLayerRegistry",
+        "importPath": "qgis.core",
+        "description": "qgis.core",
+        "isExtraImport": true,
+        "detail": "qgis.core",
+        "documentation": {}
+    },
+    {
+        "label": "QgsProviderRegistry",
+        "importPath": "qgis.core",
+        "description": "qgis.core",
+        "isExtraImport": true,
+        "detail": "qgis.core",
+        "documentation": {}
+    },
+    {
+        "label": "QgsCoordinateReferenceSystem",
+        "importPath": "qgis.core",
+        "description": "qgis.core",
+        "isExtraImport": true,
+        "detail": "qgis.core",
+        "documentation": {}
+    },
+    {
+        "label": "QgsRasterLayer",
+        "importPath": "qgis.core",
+        "description": "qgis.core",
+        "isExtraImport": true,
+        "detail": "qgis.core",
+        "documentation": {}
+    },
+    {
+        "label": "iface",
+        "importPath": "qgis.utils",
+        "description": "qgis.utils",
+        "isExtraImport": true,
+        "detail": "qgis.utils",
+        "documentation": {}
+    },
+    {
+        "label": "QObject",
+        "importPath": "qgis.PyQt.QtCore",
+        "description": "qgis.PyQt.QtCore",
+        "isExtraImport": true,
+        "detail": "qgis.PyQt.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "pyqtSlot",
+        "importPath": "qgis.PyQt.QtCore",
+        "description": "qgis.PyQt.QtCore",
+        "isExtraImport": true,
+        "detail": "qgis.PyQt.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "pyqtSignal",
+        "importPath": "qgis.PyQt.QtCore",
+        "description": "qgis.PyQt.QtCore",
+        "isExtraImport": true,
+        "detail": "qgis.PyQt.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "QByteArray",
+        "importPath": "qgis.PyQt.QtCore",
+        "description": "qgis.PyQt.QtCore",
+        "isExtraImport": true,
+        "detail": "qgis.PyQt.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "QBuffer",
+        "importPath": "qgis.PyQt.QtCore",
+        "description": "qgis.PyQt.QtCore",
+        "isExtraImport": true,
+        "detail": "qgis.PyQt.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "QIODevice",
+        "importPath": "qgis.PyQt.QtCore",
+        "description": "qgis.PyQt.QtCore",
+        "isExtraImport": true,
+        "detail": "qgis.PyQt.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "QObject",
+        "importPath": "qgis.PyQt.QtCore",
+        "description": "qgis.PyQt.QtCore",
+        "isExtraImport": true,
+        "detail": "qgis.PyQt.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "pyqtSlot",
+        "importPath": "qgis.PyQt.QtCore",
+        "description": "qgis.PyQt.QtCore",
+        "isExtraImport": true,
+        "detail": "qgis.PyQt.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "pyqtSignal",
+        "importPath": "qgis.PyQt.QtCore",
+        "description": "qgis.PyQt.QtCore",
+        "isExtraImport": true,
+        "detail": "qgis.PyQt.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "QCoreApplication",
+        "importPath": "qgis.PyQt.QtCore",
+        "description": "qgis.PyQt.QtCore",
+        "isExtraImport": true,
+        "detail": "qgis.PyQt.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "QTranslator",
+        "importPath": "qgis.PyQt.QtCore",
+        "description": "qgis.PyQt.QtCore",
+        "isExtraImport": true,
+        "detail": "qgis.PyQt.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "QSettings",
+        "importPath": "qgis.PyQt.QtCore",
+        "description": "qgis.PyQt.QtCore",
+        "isExtraImport": true,
+        "detail": "qgis.PyQt.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "QTranslator",
+        "importPath": "qgis.PyQt.QtCore",
+        "description": "qgis.PyQt.QtCore",
+        "isExtraImport": true,
+        "detail": "qgis.PyQt.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "QCoreApplication",
+        "importPath": "qgis.PyQt.QtCore",
+        "description": "qgis.PyQt.QtCore",
+        "isExtraImport": true,
+        "detail": "qgis.PyQt.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "Qt",
+        "importPath": "qgis.PyQt.QtCore",
+        "description": "qgis.PyQt.QtCore",
+        "isExtraImport": true,
+        "detail": "qgis.PyQt.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "QUrl",
+        "importPath": "qgis.PyQt.QtCore",
+        "description": "qgis.PyQt.QtCore",
+        "isExtraImport": true,
+        "detail": "qgis.PyQt.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "Qt",
+        "importPath": "qgis.PyQt.QtCore",
+        "description": "qgis.PyQt.QtCore",
+        "isExtraImport": true,
+        "detail": "qgis.PyQt.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "pyqtSignal",
+        "importPath": "qgis.PyQt.QtCore",
+        "description": "qgis.PyQt.QtCore",
+        "isExtraImport": true,
+        "detail": "qgis.PyQt.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "QImage",
+        "importPath": "qgis.PyQt.QtGui",
+        "description": "qgis.PyQt.QtGui",
+        "isExtraImport": true,
+        "detail": "qgis.PyQt.QtGui",
+        "documentation": {}
+    },
+    {
+        "label": "QPainter",
+        "importPath": "qgis.PyQt.QtGui",
+        "description": "qgis.PyQt.QtGui",
+        "isExtraImport": true,
+        "detail": "qgis.PyQt.QtGui",
+        "documentation": {}
+    },
+    {
+        "label": "QDockWidget",
+        "importPath": "qgis.PyQt.QtGui",
+        "description": "qgis.PyQt.QtGui",
+        "isExtraImport": true,
+        "detail": "qgis.PyQt.QtGui",
+        "documentation": {}
+    },
+    {
+        "label": "QIcon",
+        "importPath": "qgis.PyQt.QtGui",
+        "description": "qgis.PyQt.QtGui",
+        "isExtraImport": true,
+        "detail": "qgis.PyQt.QtGui",
+        "documentation": {}
+    },
+    {
+        "label": "QIcon",
+        "importPath": "qgis.PyQt.QtGui",
+        "description": "qgis.PyQt.QtGui",
+        "isExtraImport": true,
+        "detail": "qgis.PyQt.QtGui",
+        "documentation": {}
+    },
+    {
+        "label": "QKeySequence",
+        "importPath": "qgis.PyQt.QtGui",
+        "description": "qgis.PyQt.QtGui",
+        "isExtraImport": true,
+        "detail": "qgis.PyQt.QtGui",
+        "documentation": {}
+    },
+    {
+        "label": "logging",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
+        "documentation": {}
+    },
+    {
+        "label": "QgsMapCanvasLayer",
+        "importPath": "qgis.gui",
+        "description": "qgis.gui",
+        "isExtraImport": true,
+        "detail": "qgis.gui",
+        "documentation": {}
+    },
+    {
+        "label": "QgsDockWidget",
+        "importPath": "qgis.gui",
+        "description": "qgis.gui",
+        "isExtraImport": true,
+        "detail": "qgis.gui",
+        "documentation": {}
+    },
+    {
+        "label": "QgisInterface",
+        "importPath": "qgis.gui",
+        "description": "qgis.gui",
+        "isExtraImport": true,
+        "detail": "qgis.gui",
+        "documentation": {}
+    },
+    {
+        "label": "unittest",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "unittest",
+        "description": "unittest",
+        "detail": "unittest",
+        "documentation": {}
+    },
+    {
+        "label": "configparser",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "configparser",
+        "description": "configparser",
+        "detail": "configparser",
+        "documentation": {}
+    },
+    {
+        "label": "LayerAtlasDockWidget",
+        "importPath": "Layer_Atlas_dockwidget",
+        "description": "Layer_Atlas_dockwidget",
+        "isExtraImport": true,
+        "detail": "Layer_Atlas_dockwidget",
+        "documentation": {}
+    },
+    {
+        "label": "get_qgis_app",
+        "importPath": "utilities",
+        "description": "utilities",
+        "isExtraImport": true,
+        "detail": "utilities",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "QAction",
+        "importPath": "qgis.PyQt.QtWidgets",
+        "description": "qgis.PyQt.QtWidgets",
+        "isExtraImport": true,
+        "detail": "qgis.PyQt.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "os.path",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os.path",
+        "description": "os.path",
+        "detail": "os.path",
+        "documentation": {}
+    },
+    {
+        "label": "uic",
+        "importPath": "qgis.PyQt",
+        "description": "qgis.PyQt",
+        "isExtraImport": true,
+        "detail": "qgis.PyQt",
+        "documentation": {}
+    },
+    {
+        "label": "QWebEngineView",
+        "importPath": "qgis.PyQt.QtWebEngineWidgets",
+        "description": "qgis.PyQt.QtWebEngineWidgets",
+        "isExtraImport": true,
+        "detail": "qgis.PyQt.QtWebEngineWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QWebChannel",
+        "importPath": "PyQt5.QtWebChannel",
+        "description": "PyQt5.QtWebChannel",
+        "isExtraImport": true,
+        "detail": "PyQt5.QtWebChannel",
+        "documentation": {}
+    },
+    {
+        "label": "getpass",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "getpass",
+        "description": "getpass",
+        "detail": "getpass",
+        "documentation": {}
+    },
+    {
+        "label": "xmlrpc.client",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "xmlrpc.client",
+        "description": "xmlrpc.client",
+        "detail": "xmlrpc.client",
+        "documentation": {}
+    },
+    {
+        "label": "OptionParser",
+        "importPath": "optparse",
+        "description": "optparse",
+        "isExtraImport": true,
+        "detail": "optparse",
+        "documentation": {}
+    },
+    {
+        "label": "QtCore",
+        "importPath": "PyQt5",
+        "description": "PyQt5",
+        "isExtraImport": true,
+        "detail": "PyQt5",
+        "documentation": {}
+    },
+    {
+        "label": "#needs_sphinx",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "#needs_sphinx = '1.0'\n# Add any Sphinx extension module names here, as strings. They can be extensions\n# coming with Sphinx (named 'sphinx.ext.*') or your custom ones.\nextensions = ['sphinx.ext.todo', 'sphinx.ext.imgmath', 'sphinx.ext.viewcode']\n# Add any paths that contain templates here, relative to this directory.\ntemplates_path = ['_templates']\n# The suffix of source filenames.\nsource_suffix = '.rst'\n# The encoding of source files.\n#source_encoding = 'utf-8-sig'",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "extensions",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "extensions = ['sphinx.ext.todo', 'sphinx.ext.imgmath', 'sphinx.ext.viewcode']\n# Add any paths that contain templates here, relative to this directory.\ntemplates_path = ['_templates']\n# The suffix of source filenames.\nsource_suffix = '.rst'\n# The encoding of source files.\n#source_encoding = 'utf-8-sig'\n# The master toctree document.\nmaster_doc = 'index'\n# General information about the project.",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "templates_path",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "templates_path = ['_templates']\n# The suffix of source filenames.\nsource_suffix = '.rst'\n# The encoding of source files.\n#source_encoding = 'utf-8-sig'\n# The master toctree document.\nmaster_doc = 'index'\n# General information about the project.\nproject = u'LayerAtlas'\ncopyright = u'2013, Atelier JBP'",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "source_suffix",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "source_suffix = '.rst'\n# The encoding of source files.\n#source_encoding = 'utf-8-sig'\n# The master toctree document.\nmaster_doc = 'index'\n# General information about the project.\nproject = u'LayerAtlas'\ncopyright = u'2013, Atelier JBP'\n# The version info for the project you're documenting, acts as replacement for\n# |version| and |release|, also used in various other places throughout the",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "#source_encoding",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "#source_encoding = 'utf-8-sig'\n# The master toctree document.\nmaster_doc = 'index'\n# General information about the project.\nproject = u'LayerAtlas'\ncopyright = u'2013, Atelier JBP'\n# The version info for the project you're documenting, acts as replacement for\n# |version| and |release|, also used in various other places throughout the\n# built documents.\n#",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "master_doc",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "master_doc = 'index'\n# General information about the project.\nproject = u'LayerAtlas'\ncopyright = u'2013, Atelier JBP'\n# The version info for the project you're documenting, acts as replacement for\n# |version| and |release|, also used in various other places throughout the\n# built documents.\n#\n# The short X.Y version.\nversion = '1.0'",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "project",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "project = u'LayerAtlas'\ncopyright = u'2013, Atelier JBP'\n# The version info for the project you're documenting, acts as replacement for\n# |version| and |release|, also used in various other places throughout the\n# built documents.\n#\n# The short X.Y version.\nversion = '1.0'\n# The full version, including alpha/beta/rc tags.\nrelease = '1.0'",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "copyright",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "copyright = u'2013, Atelier JBP'\n# The version info for the project you're documenting, acts as replacement for\n# |version| and |release|, also used in various other places throughout the\n# built documents.\n#\n# The short X.Y version.\nversion = '1.0'\n# The full version, including alpha/beta/rc tags.\nrelease = '1.0'\n# The language for content autogenerated by Sphinx. Refer to documentation",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "version",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "version = '1.0'\n# The full version, including alpha/beta/rc tags.\nrelease = '1.0'\n# The language for content autogenerated by Sphinx. Refer to documentation\n# for a list of supported languages.\n#language = None\n# There are two options for replacing |today|: either, you set today to some\n# non-false value, then it is used:\n#today = ''\n# Else, today_fmt is used as the format for a strftime call.",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "release",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "release = '1.0'\n# The language for content autogenerated by Sphinx. Refer to documentation\n# for a list of supported languages.\n#language = None\n# There are two options for replacing |today|: either, you set today to some\n# non-false value, then it is used:\n#today = ''\n# Else, today_fmt is used as the format for a strftime call.\n#today_fmt = '%B %d, %Y'\n# List of patterns, relative to source directory, that match files and",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "#language",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "#language = None\n# There are two options for replacing |today|: either, you set today to some\n# non-false value, then it is used:\n#today = ''\n# Else, today_fmt is used as the format for a strftime call.\n#today_fmt = '%B %d, %Y'\n# List of patterns, relative to source directory, that match files and\n# directories to ignore when looking for source files.\nexclude_patterns = []\n# The reST default role (used for this markup: `text`) to use for all documents.",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "#today",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "#today = ''\n# Else, today_fmt is used as the format for a strftime call.\n#today_fmt = '%B %d, %Y'\n# List of patterns, relative to source directory, that match files and\n# directories to ignore when looking for source files.\nexclude_patterns = []\n# The reST default role (used for this markup: `text`) to use for all documents.\n#default_role = None\n# If true, '()' will be appended to :func: etc. cross-reference text.\n#add_function_parentheses = True",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "#today_fmt",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "#today_fmt = '%B %d, %Y'\n# List of patterns, relative to source directory, that match files and\n# directories to ignore when looking for source files.\nexclude_patterns = []\n# The reST default role (used for this markup: `text`) to use for all documents.\n#default_role = None\n# If true, '()' will be appended to :func: etc. cross-reference text.\n#add_function_parentheses = True\n# If true, the current module name will be prepended to all description\n# unit titles (such as .. function::).",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "exclude_patterns",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "exclude_patterns = []\n# The reST default role (used for this markup: `text`) to use for all documents.\n#default_role = None\n# If true, '()' will be appended to :func: etc. cross-reference text.\n#add_function_parentheses = True\n# If true, the current module name will be prepended to all description\n# unit titles (such as .. function::).\n#add_TemplateModuleNames = True\n# If true, sectionauthor and moduleauthor directives will be shown in the\n# output. They are ignored by default.",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "#default_role",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "#default_role = None\n# If true, '()' will be appended to :func: etc. cross-reference text.\n#add_function_parentheses = True\n# If true, the current module name will be prepended to all description\n# unit titles (such as .. function::).\n#add_TemplateModuleNames = True\n# If true, sectionauthor and moduleauthor directives will be shown in the\n# output. They are ignored by default.\n#show_authors = False\n# The name of the Pygments (syntax highlighting) style to use.",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "#add_function_parentheses",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "#add_function_parentheses = True\n# If true, the current module name will be prepended to all description\n# unit titles (such as .. function::).\n#add_TemplateModuleNames = True\n# If true, sectionauthor and moduleauthor directives will be shown in the\n# output. They are ignored by default.\n#show_authors = False\n# The name of the Pygments (syntax highlighting) style to use.\npygments_style = 'sphinx'\n# A list of ignored prefixes for module index sorting.",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "#add_TemplateModuleNames",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "#add_TemplateModuleNames = True\n# If true, sectionauthor and moduleauthor directives will be shown in the\n# output. They are ignored by default.\n#show_authors = False\n# The name of the Pygments (syntax highlighting) style to use.\npygments_style = 'sphinx'\n# A list of ignored prefixes for module index sorting.\n#modindex_common_prefix = []\n# -- Options for HTML output ---------------------------------------------------\n# The theme to use for HTML and HTML Help pages.  See the documentation for",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "#show_authors",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "#show_authors = False\n# The name of the Pygments (syntax highlighting) style to use.\npygments_style = 'sphinx'\n# A list of ignored prefixes for module index sorting.\n#modindex_common_prefix = []\n# -- Options for HTML output ---------------------------------------------------\n# The theme to use for HTML and HTML Help pages.  See the documentation for\n# a list of builtin themes.\nhtml_theme = 'default'\n# Theme options are theme-specific and customize the look and feel of a theme",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "pygments_style",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "pygments_style = 'sphinx'\n# A list of ignored prefixes for module index sorting.\n#modindex_common_prefix = []\n# -- Options for HTML output ---------------------------------------------------\n# The theme to use for HTML and HTML Help pages.  See the documentation for\n# a list of builtin themes.\nhtml_theme = 'default'\n# Theme options are theme-specific and customize the look and feel of a theme\n# further.  For a list of options available for each theme, see the\n# documentation.",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "#modindex_common_prefix",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "#modindex_common_prefix = []\n# -- Options for HTML output ---------------------------------------------------\n# The theme to use for HTML and HTML Help pages.  See the documentation for\n# a list of builtin themes.\nhtml_theme = 'default'\n# Theme options are theme-specific and customize the look and feel of a theme\n# further.  For a list of options available for each theme, see the\n# documentation.\n#html_theme_options = {}\n# Add any paths that contain custom themes here, relative to this directory.",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "html_theme",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "html_theme = 'default'\n# Theme options are theme-specific and customize the look and feel of a theme\n# further.  For a list of options available for each theme, see the\n# documentation.\n#html_theme_options = {}\n# Add any paths that contain custom themes here, relative to this directory.\n#html_theme_path = []\n# The name for this set of Sphinx documents.  If None, it defaults to\n# \"<project> v<release> documentation\".\n#html_title = None",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "#html_theme_options",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "#html_theme_options = {}\n# Add any paths that contain custom themes here, relative to this directory.\n#html_theme_path = []\n# The name for this set of Sphinx documents.  If None, it defaults to\n# \"<project> v<release> documentation\".\n#html_title = None\n# A shorter title for the navigation bar.  Default is the same as html_title.\n#html_short_title = None\n# The name of an image file (relative to this directory) to place at the top\n# of the sidebar.",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "#html_theme_path",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "#html_theme_path = []\n# The name for this set of Sphinx documents.  If None, it defaults to\n# \"<project> v<release> documentation\".\n#html_title = None\n# A shorter title for the navigation bar.  Default is the same as html_title.\n#html_short_title = None\n# The name of an image file (relative to this directory) to place at the top\n# of the sidebar.\n#html_logo = None\n# The name of an image file (within the static path) to use as favicon of the",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "#html_title",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "#html_title = None\n# A shorter title for the navigation bar.  Default is the same as html_title.\n#html_short_title = None\n# The name of an image file (relative to this directory) to place at the top\n# of the sidebar.\n#html_logo = None\n# The name of an image file (within the static path) to use as favicon of the\n# docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32\n# pixels large.\n#html_favicon = None",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "#html_short_title",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "#html_short_title = None\n# The name of an image file (relative to this directory) to place at the top\n# of the sidebar.\n#html_logo = None\n# The name of an image file (within the static path) to use as favicon of the\n# docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32\n# pixels large.\n#html_favicon = None\n# Add any paths that contain custom static files (such as style sheets) here,\n# relative to this directory. They are copied after the builtin static files,",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "#html_logo",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "#html_logo = None\n# The name of an image file (within the static path) to use as favicon of the\n# docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32\n# pixels large.\n#html_favicon = None\n# Add any paths that contain custom static files (such as style sheets) here,\n# relative to this directory. They are copied after the builtin static files,\n# so a file named \"default.css\" will overwrite the builtin \"default.css\".\nhtml_static_path = ['_static']\n# If not '', a 'Last updated on:' timestamp is inserted at every page bottom,",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "#html_favicon",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "#html_favicon = None\n# Add any paths that contain custom static files (such as style sheets) here,\n# relative to this directory. They are copied after the builtin static files,\n# so a file named \"default.css\" will overwrite the builtin \"default.css\".\nhtml_static_path = ['_static']\n# If not '', a 'Last updated on:' timestamp is inserted at every page bottom,\n# using the given strftime format.\n#html_last_updated_fmt = '%b %d, %Y'\n# If true, SmartyPants will be used to convert quotes and dashes to\n# typographically correct entities.",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "html_static_path",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "html_static_path = ['_static']\n# If not '', a 'Last updated on:' timestamp is inserted at every page bottom,\n# using the given strftime format.\n#html_last_updated_fmt = '%b %d, %Y'\n# If true, SmartyPants will be used to convert quotes and dashes to\n# typographically correct entities.\n#html_use_smartypants = True\n# Custom sidebar templates, maps document names to template names.\n#html_sidebars = {}\n# Additional templates that should be rendered to pages, maps page names to",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "#html_last_updated_fmt",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "#html_last_updated_fmt = '%b %d, %Y'\n# If true, SmartyPants will be used to convert quotes and dashes to\n# typographically correct entities.\n#html_use_smartypants = True\n# Custom sidebar templates, maps document names to template names.\n#html_sidebars = {}\n# Additional templates that should be rendered to pages, maps page names to\n# template names.\n#html_additional_pages = {}\n# If false, no module index is generated.",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "#html_use_smartypants",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "#html_use_smartypants = True\n# Custom sidebar templates, maps document names to template names.\n#html_sidebars = {}\n# Additional templates that should be rendered to pages, maps page names to\n# template names.\n#html_additional_pages = {}\n# If false, no module index is generated.\n#html_domain_indices = True\n# If false, no index is generated.\n#html_use_index = True",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "#html_sidebars",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "#html_sidebars = {}\n# Additional templates that should be rendered to pages, maps page names to\n# template names.\n#html_additional_pages = {}\n# If false, no module index is generated.\n#html_domain_indices = True\n# If false, no index is generated.\n#html_use_index = True\n# If true, the index is split into individual pages for each letter.\n#html_split_index = False",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "#html_additional_pages",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "#html_additional_pages = {}\n# If false, no module index is generated.\n#html_domain_indices = True\n# If false, no index is generated.\n#html_use_index = True\n# If true, the index is split into individual pages for each letter.\n#html_split_index = False\n# If true, links to the reST sources are added to the pages.\n#html_show_sourcelink = True\n# If true, \"Created using Sphinx\" is shown in the HTML footer. Default is True.",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "#html_domain_indices",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "#html_domain_indices = True\n# If false, no index is generated.\n#html_use_index = True\n# If true, the index is split into individual pages for each letter.\n#html_split_index = False\n# If true, links to the reST sources are added to the pages.\n#html_show_sourcelink = True\n# If true, \"Created using Sphinx\" is shown in the HTML footer. Default is True.\n#html_show_sphinx = True\n# If true, \"(C) Copyright ...\" is shown in the HTML footer. Default is True.",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "#html_use_index",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "#html_use_index = True\n# If true, the index is split into individual pages for each letter.\n#html_split_index = False\n# If true, links to the reST sources are added to the pages.\n#html_show_sourcelink = True\n# If true, \"Created using Sphinx\" is shown in the HTML footer. Default is True.\n#html_show_sphinx = True\n# If true, \"(C) Copyright ...\" is shown in the HTML footer. Default is True.\n#html_show_copyright = True\n# If true, an OpenSearch description file will be output, and all pages will",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "#html_split_index",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "#html_split_index = False\n# If true, links to the reST sources are added to the pages.\n#html_show_sourcelink = True\n# If true, \"Created using Sphinx\" is shown in the HTML footer. Default is True.\n#html_show_sphinx = True\n# If true, \"(C) Copyright ...\" is shown in the HTML footer. Default is True.\n#html_show_copyright = True\n# If true, an OpenSearch description file will be output, and all pages will\n# contain a <link> tag referring to it.  The value of this option must be the\n# base URL from which the finished HTML is served.",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "#html_show_sourcelink",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "#html_show_sourcelink = True\n# If true, \"Created using Sphinx\" is shown in the HTML footer. Default is True.\n#html_show_sphinx = True\n# If true, \"(C) Copyright ...\" is shown in the HTML footer. Default is True.\n#html_show_copyright = True\n# If true, an OpenSearch description file will be output, and all pages will\n# contain a <link> tag referring to it.  The value of this option must be the\n# base URL from which the finished HTML is served.\n#html_use_opensearch = ''\n# This is the file name suffix for HTML files (e.g. \".xhtml\").",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "#html_show_sphinx",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "#html_show_sphinx = True\n# If true, \"(C) Copyright ...\" is shown in the HTML footer. Default is True.\n#html_show_copyright = True\n# If true, an OpenSearch description file will be output, and all pages will\n# contain a <link> tag referring to it.  The value of this option must be the\n# base URL from which the finished HTML is served.\n#html_use_opensearch = ''\n# This is the file name suffix for HTML files (e.g. \".xhtml\").\n#html_file_suffix = None\n# Output file base name for HTML help builder.",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "#html_show_copyright",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "#html_show_copyright = True\n# If true, an OpenSearch description file will be output, and all pages will\n# contain a <link> tag referring to it.  The value of this option must be the\n# base URL from which the finished HTML is served.\n#html_use_opensearch = ''\n# This is the file name suffix for HTML files (e.g. \".xhtml\").\n#html_file_suffix = None\n# Output file base name for HTML help builder.\nhtmlhelp_basename = 'TemplateClassdoc'\n# -- Options for LaTeX output --------------------------------------------------",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "#html_use_opensearch",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "#html_use_opensearch = ''\n# This is the file name suffix for HTML files (e.g. \".xhtml\").\n#html_file_suffix = None\n# Output file base name for HTML help builder.\nhtmlhelp_basename = 'TemplateClassdoc'\n# -- Options for LaTeX output --------------------------------------------------\n# The paper size ('letter' or 'a4').\n#latex_paper_size = 'letter'\n# The font size ('10pt', '11pt' or '12pt').\n#latex_font_size = '10pt'",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "#html_file_suffix",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "#html_file_suffix = None\n# Output file base name for HTML help builder.\nhtmlhelp_basename = 'TemplateClassdoc'\n# -- Options for LaTeX output --------------------------------------------------\n# The paper size ('letter' or 'a4').\n#latex_paper_size = 'letter'\n# The font size ('10pt', '11pt' or '12pt').\n#latex_font_size = '10pt'\n# Grouping the document tree into LaTeX files. List of tuples\n# (source start file, target name, title, author, documentclass [howto/manual]).",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "htmlhelp_basename",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "htmlhelp_basename = 'TemplateClassdoc'\n# -- Options for LaTeX output --------------------------------------------------\n# The paper size ('letter' or 'a4').\n#latex_paper_size = 'letter'\n# The font size ('10pt', '11pt' or '12pt').\n#latex_font_size = '10pt'\n# Grouping the document tree into LaTeX files. List of tuples\n# (source start file, target name, title, author, documentclass [howto/manual]).\nlatex_documents = [\n  ('index', 'LayerAtlas.tex', u'LayerAtlas Documentation',",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "#latex_paper_size",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "#latex_paper_size = 'letter'\n# The font size ('10pt', '11pt' or '12pt').\n#latex_font_size = '10pt'\n# Grouping the document tree into LaTeX files. List of tuples\n# (source start file, target name, title, author, documentclass [howto/manual]).\nlatex_documents = [\n  ('index', 'LayerAtlas.tex', u'LayerAtlas Documentation',\n   u'Atelier JBP', 'manual'),\n]\n# The name of an image file (relative to this directory) to place at the top of",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "#latex_font_size",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "#latex_font_size = '10pt'\n# Grouping the document tree into LaTeX files. List of tuples\n# (source start file, target name, title, author, documentclass [howto/manual]).\nlatex_documents = [\n  ('index', 'LayerAtlas.tex', u'LayerAtlas Documentation',\n   u'Atelier JBP', 'manual'),\n]\n# The name of an image file (relative to this directory) to place at the top of\n# the title page.\n#latex_logo = None",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "latex_documents",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "latex_documents = [\n  ('index', 'LayerAtlas.tex', u'LayerAtlas Documentation',\n   u'Atelier JBP', 'manual'),\n]\n# The name of an image file (relative to this directory) to place at the top of\n# the title page.\n#latex_logo = None\n# For \"manual\" documents, if this is true, then toplevel headings are parts,\n# not chapters.\n#latex_use_parts = False",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "#latex_logo",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "#latex_logo = None\n# For \"manual\" documents, if this is true, then toplevel headings are parts,\n# not chapters.\n#latex_use_parts = False\n# If true, show page references after internal links.\n#latex_show_pagerefs = False\n# If true, show URL addresses after external links.\n#latex_show_urls = False\n# Additional stuff for the LaTeX preamble.\n#latex_preamble = ''",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "#latex_use_parts",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "#latex_use_parts = False\n# If true, show page references after internal links.\n#latex_show_pagerefs = False\n# If true, show URL addresses after external links.\n#latex_show_urls = False\n# Additional stuff for the LaTeX preamble.\n#latex_preamble = ''\n# Documents to append as an appendix to all manuals.\n#latex_appendices = []\n# If false, no module index is generated.",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "#latex_show_pagerefs",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "#latex_show_pagerefs = False\n# If true, show URL addresses after external links.\n#latex_show_urls = False\n# Additional stuff for the LaTeX preamble.\n#latex_preamble = ''\n# Documents to append as an appendix to all manuals.\n#latex_appendices = []\n# If false, no module index is generated.\n#latex_domain_indices = True\n# -- Options for manual page output --------------------------------------------",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "#latex_show_urls",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "#latex_show_urls = False\n# Additional stuff for the LaTeX preamble.\n#latex_preamble = ''\n# Documents to append as an appendix to all manuals.\n#latex_appendices = []\n# If false, no module index is generated.\n#latex_domain_indices = True\n# -- Options for manual page output --------------------------------------------\n# One entry per manual page. List of tuples\n# (source start file, name, description, authors, manual section).",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "#latex_preamble",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "#latex_preamble = ''\n# Documents to append as an appendix to all manuals.\n#latex_appendices = []\n# If false, no module index is generated.\n#latex_domain_indices = True\n# -- Options for manual page output --------------------------------------------\n# One entry per manual page. List of tuples\n# (source start file, name, description, authors, manual section).\nman_pages = [\n    ('index', 'TemplateClass', u'LayerAtlas Documentation',",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "#latex_appendices",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "#latex_appendices = []\n# If false, no module index is generated.\n#latex_domain_indices = True\n# -- Options for manual page output --------------------------------------------\n# One entry per manual page. List of tuples\n# (source start file, name, description, authors, manual section).\nman_pages = [\n    ('index', 'TemplateClass', u'LayerAtlas Documentation',\n     [u'Atelier JBP'], 1)\n]",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "#latex_domain_indices",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "#latex_domain_indices = True\n# -- Options for manual page output --------------------------------------------\n# One entry per manual page. List of tuples\n# (source start file, name, description, authors, manual section).\nman_pages = [\n    ('index', 'TemplateClass', u'LayerAtlas Documentation',\n     [u'Atelier JBP'], 1)\n]",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "man_pages",
+        "kind": 5,
+        "importPath": "help.source.conf",
+        "description": "help.source.conf",
+        "peekOfCode": "man_pages = [\n    ('index', 'TemplateClass', u'LayerAtlas Documentation',\n     [u'Atelier JBP'], 1)\n]",
+        "detail": "help.source.conf",
+        "documentation": {}
+    },
+    {
+        "label": "Backend",
+        "kind": 6,
+        "importPath": "src.backend",
+        "description": "src.backend",
+        "peekOfCode": "class Backend(QObject):\n    \"\"\"\n    Handle communication with the QwebEngineView.\n    \"\"\"\n    # Signal to create a layer\n    EmitCreateLayer = pyqtSignal(str)\n    @pyqtSlot(str, result=bool)\n    def addLayerToProject(self, LayerDefinitionXML):\n        \"\"\"\n        Adds a layer to the current QGIS project using a layer definition XML string.",
+        "detail": "src.backend",
+        "documentation": {}
+    },
+    {
+        "label": "QgisInterface",
+        "kind": 6,
+        "importPath": "test.qgis_interface",
+        "description": "test.qgis_interface",
+        "peekOfCode": "class QgisInterface(QObject):\n    \"\"\"Class to expose QGIS objects and functions to plugins.\n    This class is here for enabling us to run unit tests only,\n    so most methods are simply stubs.\n    \"\"\"\n    currentLayerChanged = pyqtSignal(QgsMapCanvasLayer)\n    def __init__(self, canvas):\n        \"\"\"Constructor\n        :param canvas:\n        \"\"\"",
+        "detail": "test.qgis_interface",
+        "documentation": {}
+    },
+    {
+        "label": "__author__",
+        "kind": 5,
+        "importPath": "test.qgis_interface",
+        "description": "test.qgis_interface",
+        "peekOfCode": "__author__ = 'tim@linfiniti.com'\n__revision__ = '$Format:%H$'\n__date__ = '10/01/2011'\n__copyright__ = (\n    'Copyright (c) 2010 by Ivan Mincik, ivan.mincik@gista.sk and '\n    'Copyright (c) 2011 German Carrillo, geotux_tuxman@linuxmail.org'\n    'Copyright (c) 2014 Tim Sutton, tim@linfiniti.com'\n)\nimport logging\nfrom qgis.PyQt.QtCore import QObject, pyqtSlot, pyqtSignal",
+        "detail": "test.qgis_interface",
+        "documentation": {}
+    },
+    {
+        "label": "__revision__",
+        "kind": 5,
+        "importPath": "test.qgis_interface",
+        "description": "test.qgis_interface",
+        "peekOfCode": "__revision__ = '$Format:%H$'\n__date__ = '10/01/2011'\n__copyright__ = (\n    'Copyright (c) 2010 by Ivan Mincik, ivan.mincik@gista.sk and '\n    'Copyright (c) 2011 German Carrillo, geotux_tuxman@linuxmail.org'\n    'Copyright (c) 2014 Tim Sutton, tim@linfiniti.com'\n)\nimport logging\nfrom qgis.PyQt.QtCore import QObject, pyqtSlot, pyqtSignal\nfrom qgis.core import QgsMapLayerRegistry",
+        "detail": "test.qgis_interface",
+        "documentation": {}
+    },
+    {
+        "label": "__date__",
+        "kind": 5,
+        "importPath": "test.qgis_interface",
+        "description": "test.qgis_interface",
+        "peekOfCode": "__date__ = '10/01/2011'\n__copyright__ = (\n    'Copyright (c) 2010 by Ivan Mincik, ivan.mincik@gista.sk and '\n    'Copyright (c) 2011 German Carrillo, geotux_tuxman@linuxmail.org'\n    'Copyright (c) 2014 Tim Sutton, tim@linfiniti.com'\n)\nimport logging\nfrom qgis.PyQt.QtCore import QObject, pyqtSlot, pyqtSignal\nfrom qgis.core import QgsMapLayerRegistry\nfrom qgis.gui import QgsMapCanvasLayer",
+        "detail": "test.qgis_interface",
+        "documentation": {}
+    },
+    {
+        "label": "__copyright__",
+        "kind": 5,
+        "importPath": "test.qgis_interface",
+        "description": "test.qgis_interface",
+        "peekOfCode": "__copyright__ = (\n    'Copyright (c) 2010 by Ivan Mincik, ivan.mincik@gista.sk and '\n    'Copyright (c) 2011 German Carrillo, geotux_tuxman@linuxmail.org'\n    'Copyright (c) 2014 Tim Sutton, tim@linfiniti.com'\n)\nimport logging\nfrom qgis.PyQt.QtCore import QObject, pyqtSlot, pyqtSignal\nfrom qgis.core import QgsMapLayerRegistry\nfrom qgis.gui import QgsMapCanvasLayer\nLOGGER = logging.getLogger('QGIS')",
+        "detail": "test.qgis_interface",
+        "documentation": {}
+    },
+    {
+        "label": "LOGGER",
+        "kind": 5,
+        "importPath": "test.qgis_interface",
+        "description": "test.qgis_interface",
+        "peekOfCode": "LOGGER = logging.getLogger('QGIS')\n#noinspection PyMethodMayBeStatic,PyPep8Naming\nclass QgisInterface(QObject):\n    \"\"\"Class to expose QGIS objects and functions to plugins.\n    This class is here for enabling us to run unit tests only,\n    so most methods are simply stubs.\n    \"\"\"\n    currentLayerChanged = pyqtSignal(QgsMapCanvasLayer)\n    def __init__(self, canvas):\n        \"\"\"Constructor",
+        "detail": "test.qgis_interface",
+        "documentation": {}
+    },
+    {
+        "label": "TestInit",
+        "kind": 6,
+        "importPath": "test.test_init",
+        "description": "test.test_init",
+        "peekOfCode": "class TestInit(unittest.TestCase):\n    \"\"\"Test that the plugin init is usable for QGIS.\n    Based heavily on the validator class by Alessandro\n    Passoti available here:\n    http://github.com/qgis/qgis-django/blob/master/qgis-app/\n             plugins/validator.py\n    \"\"\"\n    def test_read_init(self):\n        \"\"\"Test that the plugin __init__ will validate on plugins.qgis.org.\"\"\"\n        # You should update this list according to the latest in",
+        "detail": "test.test_init",
+        "documentation": {}
+    },
+    {
+        "label": "__author__",
+        "kind": 5,
+        "importPath": "test.test_init",
+        "description": "test.test_init",
+        "peekOfCode": "__author__ = 'Tim Sutton <tim@linfiniti.com>'\n__revision__ = '$Format:%H$'\n__date__ = '17/10/2010'\n__license__ = \"GPL\"\n__copyright__ = 'Copyright 2012, Australia Indonesia Facility for '\n__copyright__ += 'Disaster Reduction'\nimport os\nimport unittest\nimport logging\nimport configparser",
+        "detail": "test.test_init",
+        "documentation": {}
+    },
+    {
+        "label": "__revision__",
+        "kind": 5,
+        "importPath": "test.test_init",
+        "description": "test.test_init",
+        "peekOfCode": "__revision__ = '$Format:%H$'\n__date__ = '17/10/2010'\n__license__ = \"GPL\"\n__copyright__ = 'Copyright 2012, Australia Indonesia Facility for '\n__copyright__ += 'Disaster Reduction'\nimport os\nimport unittest\nimport logging\nimport configparser\nLOGGER = logging.getLogger('QGIS')",
+        "detail": "test.test_init",
+        "documentation": {}
+    },
+    {
+        "label": "__date__",
+        "kind": 5,
+        "importPath": "test.test_init",
+        "description": "test.test_init",
+        "peekOfCode": "__date__ = '17/10/2010'\n__license__ = \"GPL\"\n__copyright__ = 'Copyright 2012, Australia Indonesia Facility for '\n__copyright__ += 'Disaster Reduction'\nimport os\nimport unittest\nimport logging\nimport configparser\nLOGGER = logging.getLogger('QGIS')\nclass TestInit(unittest.TestCase):",
+        "detail": "test.test_init",
+        "documentation": {}
+    },
+    {
+        "label": "__license__",
+        "kind": 5,
+        "importPath": "test.test_init",
+        "description": "test.test_init",
+        "peekOfCode": "__license__ = \"GPL\"\n__copyright__ = 'Copyright 2012, Australia Indonesia Facility for '\n__copyright__ += 'Disaster Reduction'\nimport os\nimport unittest\nimport logging\nimport configparser\nLOGGER = logging.getLogger('QGIS')\nclass TestInit(unittest.TestCase):\n    \"\"\"Test that the plugin init is usable for QGIS.",
+        "detail": "test.test_init",
+        "documentation": {}
+    },
+    {
+        "label": "__copyright__",
+        "kind": 5,
+        "importPath": "test.test_init",
+        "description": "test.test_init",
+        "peekOfCode": "__copyright__ = 'Copyright 2012, Australia Indonesia Facility for '\n__copyright__ += 'Disaster Reduction'\nimport os\nimport unittest\nimport logging\nimport configparser\nLOGGER = logging.getLogger('QGIS')\nclass TestInit(unittest.TestCase):\n    \"\"\"Test that the plugin init is usable for QGIS.\n    Based heavily on the validator class by Alessandro",
+        "detail": "test.test_init",
+        "documentation": {}
+    },
+    {
+        "label": "LOGGER",
+        "kind": 5,
+        "importPath": "test.test_init",
+        "description": "test.test_init",
+        "peekOfCode": "LOGGER = logging.getLogger('QGIS')\nclass TestInit(unittest.TestCase):\n    \"\"\"Test that the plugin init is usable for QGIS.\n    Based heavily on the validator class by Alessandro\n    Passoti available here:\n    http://github.com/qgis/qgis-django/blob/master/qgis-app/\n             plugins/validator.py\n    \"\"\"\n    def test_read_init(self):\n        \"\"\"Test that the plugin __init__ will validate on plugins.qgis.org.\"\"\"",
+        "detail": "test.test_init",
+        "documentation": {}
+    },
+    {
+        "label": "LayerAtlasDockWidgetTest",
+        "kind": 6,
+        "importPath": "test.test_Layer_Atlas_dockwidget",
+        "description": "test.test_Layer_Atlas_dockwidget",
+        "peekOfCode": "class LayerAtlasDockWidgetTest(unittest.TestCase):\n    \"\"\"Test dockwidget works.\"\"\"\n    def setUp(self):\n        \"\"\"Runs before each test.\"\"\"\n        self.dockwidget = LayerAtlasDockWidget(None)\n    def tearDown(self):\n        \"\"\"Runs after each test.\"\"\"\n        self.dockwidget = None\n    def test_dockwidget_ok(self):\n        \"\"\"Test we can click OK.\"\"\"",
+        "detail": "test.test_Layer_Atlas_dockwidget",
+        "documentation": {}
+    },
+    {
+        "label": "__author__",
+        "kind": 5,
+        "importPath": "test.test_Layer_Atlas_dockwidget",
+        "description": "test.test_Layer_Atlas_dockwidget",
+        "peekOfCode": "__author__ = 'jbpeter@outlook.com'\n__date__ = '2024-07-04'\n__copyright__ = 'Copyright 2024, Atelier JBP'\nimport unittest\nfrom qgis.PyQt.QtGui import QDockWidget\nfrom Layer_Atlas_dockwidget import LayerAtlasDockWidget\nfrom utilities import get_qgis_app\nQGIS_APP = get_qgis_app()\nclass LayerAtlasDockWidgetTest(unittest.TestCase):\n    \"\"\"Test dockwidget works.\"\"\"",
+        "detail": "test.test_Layer_Atlas_dockwidget",
+        "documentation": {}
+    },
+    {
+        "label": "__date__",
+        "kind": 5,
+        "importPath": "test.test_Layer_Atlas_dockwidget",
+        "description": "test.test_Layer_Atlas_dockwidget",
+        "peekOfCode": "__date__ = '2024-07-04'\n__copyright__ = 'Copyright 2024, Atelier JBP'\nimport unittest\nfrom qgis.PyQt.QtGui import QDockWidget\nfrom Layer_Atlas_dockwidget import LayerAtlasDockWidget\nfrom utilities import get_qgis_app\nQGIS_APP = get_qgis_app()\nclass LayerAtlasDockWidgetTest(unittest.TestCase):\n    \"\"\"Test dockwidget works.\"\"\"\n    def setUp(self):",
+        "detail": "test.test_Layer_Atlas_dockwidget",
+        "documentation": {}
+    },
+    {
+        "label": "__copyright__",
+        "kind": 5,
+        "importPath": "test.test_Layer_Atlas_dockwidget",
+        "description": "test.test_Layer_Atlas_dockwidget",
+        "peekOfCode": "__copyright__ = 'Copyright 2024, Atelier JBP'\nimport unittest\nfrom qgis.PyQt.QtGui import QDockWidget\nfrom Layer_Atlas_dockwidget import LayerAtlasDockWidget\nfrom utilities import get_qgis_app\nQGIS_APP = get_qgis_app()\nclass LayerAtlasDockWidgetTest(unittest.TestCase):\n    \"\"\"Test dockwidget works.\"\"\"\n    def setUp(self):\n        \"\"\"Runs before each test.\"\"\"",
+        "detail": "test.test_Layer_Atlas_dockwidget",
+        "documentation": {}
+    },
+    {
+        "label": "QGIS_APP",
+        "kind": 5,
+        "importPath": "test.test_Layer_Atlas_dockwidget",
+        "description": "test.test_Layer_Atlas_dockwidget",
+        "peekOfCode": "QGIS_APP = get_qgis_app()\nclass LayerAtlasDockWidgetTest(unittest.TestCase):\n    \"\"\"Test dockwidget works.\"\"\"\n    def setUp(self):\n        \"\"\"Runs before each test.\"\"\"\n        self.dockwidget = LayerAtlasDockWidget(None)\n    def tearDown(self):\n        \"\"\"Runs after each test.\"\"\"\n        self.dockwidget = None\n    def test_dockwidget_ok(self):",
+        "detail": "test.test_Layer_Atlas_dockwidget",
+        "documentation": {}
+    },
+    {
+        "label": "QGISTest",
+        "kind": 6,
+        "importPath": "test.test_qgis_environment",
+        "description": "test.test_qgis_environment",
+        "peekOfCode": "class QGISTest(unittest.TestCase):\n    \"\"\"Test the QGIS Environment\"\"\"\n    def test_qgis_environment(self):\n        \"\"\"QGIS environment has the expected providers\"\"\"\n        r = QgsProviderRegistry.instance()\n        self.assertIn('gdal', r.providerList())\n        self.assertIn('ogr', r.providerList())\n        self.assertIn('postgres', r.providerList())\n    def test_projection(self):\n        \"\"\"Test that QGIS properly parses a wkt string.",
+        "detail": "test.test_qgis_environment",
+        "documentation": {}
+    },
+    {
+        "label": "__author__",
+        "kind": 5,
+        "importPath": "test.test_qgis_environment",
+        "description": "test.test_qgis_environment",
+        "peekOfCode": "__author__ = 'tim@linfiniti.com'\n__date__ = '20/01/2011'\n__copyright__ = ('Copyright 2012, Australia Indonesia Facility for '\n                 'Disaster Reduction')\nimport os\nimport unittest\nfrom qgis.core import (\n    QgsProviderRegistry,\n    QgsCoordinateReferenceSystem,\n    QgsRasterLayer)",
+        "detail": "test.test_qgis_environment",
+        "documentation": {}
+    },
+    {
+        "label": "__date__",
+        "kind": 5,
+        "importPath": "test.test_qgis_environment",
+        "description": "test.test_qgis_environment",
+        "peekOfCode": "__date__ = '20/01/2011'\n__copyright__ = ('Copyright 2012, Australia Indonesia Facility for '\n                 'Disaster Reduction')\nimport os\nimport unittest\nfrom qgis.core import (\n    QgsProviderRegistry,\n    QgsCoordinateReferenceSystem,\n    QgsRasterLayer)\nfrom .utilities import get_qgis_app",
+        "detail": "test.test_qgis_environment",
+        "documentation": {}
+    },
+    {
+        "label": "__copyright__",
+        "kind": 5,
+        "importPath": "test.test_qgis_environment",
+        "description": "test.test_qgis_environment",
+        "peekOfCode": "__copyright__ = ('Copyright 2012, Australia Indonesia Facility for '\n                 'Disaster Reduction')\nimport os\nimport unittest\nfrom qgis.core import (\n    QgsProviderRegistry,\n    QgsCoordinateReferenceSystem,\n    QgsRasterLayer)\nfrom .utilities import get_qgis_app\nQGIS_APP = get_qgis_app()",
+        "detail": "test.test_qgis_environment",
+        "documentation": {}
+    },
+    {
+        "label": "QGIS_APP",
+        "kind": 5,
+        "importPath": "test.test_qgis_environment",
+        "description": "test.test_qgis_environment",
+        "peekOfCode": "QGIS_APP = get_qgis_app()\nclass QGISTest(unittest.TestCase):\n    \"\"\"Test the QGIS Environment\"\"\"\n    def test_qgis_environment(self):\n        \"\"\"QGIS environment has the expected providers\"\"\"\n        r = QgsProviderRegistry.instance()\n        self.assertIn('gdal', r.providerList())\n        self.assertIn('ogr', r.providerList())\n        self.assertIn('postgres', r.providerList())\n    def test_projection(self):",
+        "detail": "test.test_qgis_environment",
+        "documentation": {}
+    },
+    {
+        "label": "LayerAtlasDialogTest",
+        "kind": 6,
+        "importPath": "test.test_resources",
+        "description": "test.test_resources",
+        "peekOfCode": "class LayerAtlasDialogTest(unittest.TestCase):\n    \"\"\"Test rerources work.\"\"\"\n    def setUp(self):\n        \"\"\"Runs before each test.\"\"\"\n        pass\n    def tearDown(self):\n        \"\"\"Runs after each test.\"\"\"\n        pass\n    def test_icon_png(self):\n        \"\"\"Test we can click OK.\"\"\"",
+        "detail": "test.test_resources",
+        "documentation": {}
+    },
+    {
+        "label": "__author__",
+        "kind": 5,
+        "importPath": "test.test_resources",
+        "description": "test.test_resources",
+        "peekOfCode": "__author__ = 'jbpeter@outlook.com'\n__date__ = '2024-07-04'\n__copyright__ = 'Copyright 2024, Atelier JBP'\nimport unittest\nfrom qgis.PyQt.QtGui import QIcon\nclass LayerAtlasDialogTest(unittest.TestCase):\n    \"\"\"Test rerources work.\"\"\"\n    def setUp(self):\n        \"\"\"Runs before each test.\"\"\"\n        pass",
+        "detail": "test.test_resources",
+        "documentation": {}
+    },
+    {
+        "label": "__date__",
+        "kind": 5,
+        "importPath": "test.test_resources",
+        "description": "test.test_resources",
+        "peekOfCode": "__date__ = '2024-07-04'\n__copyright__ = 'Copyright 2024, Atelier JBP'\nimport unittest\nfrom qgis.PyQt.QtGui import QIcon\nclass LayerAtlasDialogTest(unittest.TestCase):\n    \"\"\"Test rerources work.\"\"\"\n    def setUp(self):\n        \"\"\"Runs before each test.\"\"\"\n        pass\n    def tearDown(self):",
+        "detail": "test.test_resources",
+        "documentation": {}
+    },
+    {
+        "label": "__copyright__",
+        "kind": 5,
+        "importPath": "test.test_resources",
+        "description": "test.test_resources",
+        "peekOfCode": "__copyright__ = 'Copyright 2024, Atelier JBP'\nimport unittest\nfrom qgis.PyQt.QtGui import QIcon\nclass LayerAtlasDialogTest(unittest.TestCase):\n    \"\"\"Test rerources work.\"\"\"\n    def setUp(self):\n        \"\"\"Runs before each test.\"\"\"\n        pass\n    def tearDown(self):\n        \"\"\"Runs after each test.\"\"\"",
+        "detail": "test.test_resources",
+        "documentation": {}
+    },
+    {
+        "label": "SafeTranslationsTest",
+        "kind": 6,
+        "importPath": "test.test_translations",
+        "description": "test.test_translations",
+        "peekOfCode": "class SafeTranslationsTest(unittest.TestCase):\n    \"\"\"Test translations work.\"\"\"\n    def setUp(self):\n        \"\"\"Runs before each test.\"\"\"\n        if 'LANG' in iter(os.environ.keys()):\n            os.environ.__delitem__('LANG')\n    def tearDown(self):\n        \"\"\"Runs after each test.\"\"\"\n        if 'LANG' in iter(os.environ.keys()):\n            os.environ.__delitem__('LANG')",
+        "detail": "test.test_translations",
+        "documentation": {}
+    },
+    {
+        "label": "__author__",
+        "kind": 5,
+        "importPath": "test.test_translations",
+        "description": "test.test_translations",
+        "peekOfCode": "__author__ = 'ismailsunni@yahoo.co.id'\n__date__ = '12/10/2011'\n__copyright__ = ('Copyright 2012, Australia Indonesia Facility for '\n                 'Disaster Reduction')\nimport unittest\nimport os\nfrom qgis.PyQt.QtCore import QCoreApplication, QTranslator\nQGIS_APP = get_qgis_app()\nclass SafeTranslationsTest(unittest.TestCase):\n    \"\"\"Test translations work.\"\"\"",
+        "detail": "test.test_translations",
+        "documentation": {}
+    },
+    {
+        "label": "__date__",
+        "kind": 5,
+        "importPath": "test.test_translations",
+        "description": "test.test_translations",
+        "peekOfCode": "__date__ = '12/10/2011'\n__copyright__ = ('Copyright 2012, Australia Indonesia Facility for '\n                 'Disaster Reduction')\nimport unittest\nimport os\nfrom qgis.PyQt.QtCore import QCoreApplication, QTranslator\nQGIS_APP = get_qgis_app()\nclass SafeTranslationsTest(unittest.TestCase):\n    \"\"\"Test translations work.\"\"\"\n    def setUp(self):",
+        "detail": "test.test_translations",
+        "documentation": {}
+    },
+    {
+        "label": "__copyright__",
+        "kind": 5,
+        "importPath": "test.test_translations",
+        "description": "test.test_translations",
+        "peekOfCode": "__copyright__ = ('Copyright 2012, Australia Indonesia Facility for '\n                 'Disaster Reduction')\nimport unittest\nimport os\nfrom qgis.PyQt.QtCore import QCoreApplication, QTranslator\nQGIS_APP = get_qgis_app()\nclass SafeTranslationsTest(unittest.TestCase):\n    \"\"\"Test translations work.\"\"\"\n    def setUp(self):\n        \"\"\"Runs before each test.\"\"\"",
+        "detail": "test.test_translations",
+        "documentation": {}
+    },
+    {
+        "label": "QGIS_APP",
+        "kind": 5,
+        "importPath": "test.test_translations",
+        "description": "test.test_translations",
+        "peekOfCode": "QGIS_APP = get_qgis_app()\nclass SafeTranslationsTest(unittest.TestCase):\n    \"\"\"Test translations work.\"\"\"\n    def setUp(self):\n        \"\"\"Runs before each test.\"\"\"\n        if 'LANG' in iter(os.environ.keys()):\n            os.environ.__delitem__('LANG')\n    def tearDown(self):\n        \"\"\"Runs after each test.\"\"\"\n        if 'LANG' in iter(os.environ.keys()):",
+        "detail": "test.test_translations",
+        "documentation": {}
+    },
+    {
+        "label": "get_qgis_app",
+        "kind": 2,
+        "importPath": "test.utilities",
+        "description": "test.utilities",
+        "peekOfCode": "def get_qgis_app():\n    \"\"\" Start one QGIS application to test against.\n    :returns: Handle to QGIS app, canvas, iface and parent. If there are any\n        errors the tuple members will be returned as None.\n    :rtype: (QgsApplication, CANVAS, IFACE, PARENT)\n    If QGIS is already running the handle to that app will be returned.\n    \"\"\"\n    try:\n        from qgis.PyQt import QtGui, QtCore\n        from qgis.core import QgsApplication",
+        "detail": "test.utilities",
+        "documentation": {}
+    },
+    {
+        "label": "LOGGER",
+        "kind": 5,
+        "importPath": "test.utilities",
+        "description": "test.utilities",
+        "peekOfCode": "LOGGER = logging.getLogger('QGIS')\nQGIS_APP = None  # Static variable used to hold hand to running QGIS app\nCANVAS = None\nPARENT = None\nIFACE = None\ndef get_qgis_app():\n    \"\"\" Start one QGIS application to test against.\n    :returns: Handle to QGIS app, canvas, iface and parent. If there are any\n        errors the tuple members will be returned as None.\n    :rtype: (QgsApplication, CANVAS, IFACE, PARENT)",
+        "detail": "test.utilities",
+        "documentation": {}
+    },
+    {
+        "label": "QGIS_APP",
+        "kind": 5,
+        "importPath": "test.utilities",
+        "description": "test.utilities",
+        "peekOfCode": "QGIS_APP = None  # Static variable used to hold hand to running QGIS app\nCANVAS = None\nPARENT = None\nIFACE = None\ndef get_qgis_app():\n    \"\"\" Start one QGIS application to test against.\n    :returns: Handle to QGIS app, canvas, iface and parent. If there are any\n        errors the tuple members will be returned as None.\n    :rtype: (QgsApplication, CANVAS, IFACE, PARENT)\n    If QGIS is already running the handle to that app will be returned.",
+        "detail": "test.utilities",
+        "documentation": {}
+    },
+    {
+        "label": "CANVAS",
+        "kind": 5,
+        "importPath": "test.utilities",
+        "description": "test.utilities",
+        "peekOfCode": "CANVAS = None\nPARENT = None\nIFACE = None\ndef get_qgis_app():\n    \"\"\" Start one QGIS application to test against.\n    :returns: Handle to QGIS app, canvas, iface and parent. If there are any\n        errors the tuple members will be returned as None.\n    :rtype: (QgsApplication, CANVAS, IFACE, PARENT)\n    If QGIS is already running the handle to that app will be returned.\n    \"\"\"",
+        "detail": "test.utilities",
+        "documentation": {}
+    },
+    {
+        "label": "PARENT",
+        "kind": 5,
+        "importPath": "test.utilities",
+        "description": "test.utilities",
+        "peekOfCode": "PARENT = None\nIFACE = None\ndef get_qgis_app():\n    \"\"\" Start one QGIS application to test against.\n    :returns: Handle to QGIS app, canvas, iface and parent. If there are any\n        errors the tuple members will be returned as None.\n    :rtype: (QgsApplication, CANVAS, IFACE, PARENT)\n    If QGIS is already running the handle to that app will be returned.\n    \"\"\"\n    try:",
+        "detail": "test.utilities",
+        "documentation": {}
+    },
+    {
+        "label": "IFACE",
+        "kind": 5,
+        "importPath": "test.utilities",
+        "description": "test.utilities",
+        "peekOfCode": "IFACE = None\ndef get_qgis_app():\n    \"\"\" Start one QGIS application to test against.\n    :returns: Handle to QGIS app, canvas, iface and parent. If there are any\n        errors the tuple members will be returned as None.\n    :rtype: (QgsApplication, CANVAS, IFACE, PARENT)\n    If QGIS is already running the handle to that app will be returned.\n    \"\"\"\n    try:\n        from qgis.PyQt import QtGui, QtCore",
+        "detail": "test.utilities",
+        "documentation": {}
+    },
+    {
+        "label": "LayerAtlas",
+        "kind": 6,
+        "importPath": "Layer_Atlas",
+        "description": "Layer_Atlas",
+        "peekOfCode": "class LayerAtlas:\n    \"\"\"QGIS Plugin Implementation.\"\"\"\n    def __init__(self, iface):\n        \"\"\"Constructor.\n        :param iface: An interface instance that will be passed to this class\n            which provides the hook by which you can manipulate the QGIS\n            application at run time.\n        :type iface: QgsInterface\n        \"\"\"\n        # Save reference to the QGIS interface",
+        "detail": "Layer_Atlas",
+        "documentation": {}
+    },
+    {
+        "label": "LayerAtlasDockWidget",
+        "kind": 6,
+        "importPath": "Layer_Atlas_dockwidget",
+        "description": "Layer_Atlas_dockwidget",
+        "peekOfCode": "class LayerAtlasDockWidget(QgsDockWidget, FORM_CLASS):\n    closingPlugin = pyqtSignal()\n    def __init__(self, _iface: QgisInterface = None):\n        \"\"\"Constructor.\"\"\"\n        super().__init__()\n        self.iface = _iface\n        self.setObjectName(\"LayerAtlasPlugin\")\n        self.setWindowTitle(self.tr(\"Layer Atlas\"))\n        self.setAllowedAreas(Qt.LeftDockWidgetArea | Qt.RightDockWidgetArea)\n        self.view = CustomWebEngineView()",
+        "detail": "Layer_Atlas_dockwidget",
+        "documentation": {}
+    },
+    {
+        "label": "CustomWebEngineView",
+        "kind": 6,
+        "importPath": "Layer_Atlas_dockwidget",
+        "description": "Layer_Atlas_dockwidget",
+        "peekOfCode": "class CustomWebEngineView(QWebEngineView):\n    def __init__(self, *args, **kwargs):\n        super(CustomWebEngineView, self).__init__(*args, **kwargs)\n        self.setAcceptDrops(True)\n        self.setContextMenuPolicy(Qt.NoContextMenu)\n        self.backend = Backend()\n        self.channel = QWebChannel()\n        self.page().setWebChannel(self.channel)\n        self.channel.registerObject(\"backend\", self.backend)\n        url = QUrl(\"http://localhost:9000/\")",
+        "detail": "Layer_Atlas_dockwidget",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "plugin_upload",
+        "description": "plugin_upload",
+        "peekOfCode": "def main(parameters, arguments):\n    \"\"\"Main entry point.\n    :param parameters: Command line parameters.\n    :param arguments: Command line arguments.\n    \"\"\"\n    address = \"{protocol}://{username}:{password}@{server}:{port}{endpoint}\".format(\n        protocol=PROTOCOL,\n        username=parameters.username,\n        password=parameters.password,\n        server=parameters.server,",
+        "detail": "plugin_upload",
+        "documentation": {}
+    },
+    {
+        "label": "hide_password",
+        "kind": 2,
+        "importPath": "plugin_upload",
+        "description": "plugin_upload",
+        "peekOfCode": "def hide_password(url, start=6):\n    \"\"\"Returns the http url with password part replaced with '*'.\n    :param url: URL to upload the plugin to.\n    :type url: str\n    :param start: Position of start of password.\n    :type start: int\n    \"\"\"\n    start_position = url.find(':', start) + 1\n    end_position = url.find('@')\n    return \"%s%s%s\" % (",
+        "detail": "plugin_upload",
+        "documentation": {}
+    },
+    {
+        "label": "PROTOCOL",
+        "kind": 5,
+        "importPath": "plugin_upload",
+        "description": "plugin_upload",
+        "peekOfCode": "PROTOCOL = 'https'\nSERVER = 'plugins.qgis.org'\nPORT = '443'\nENDPOINT = '/plugins/RPC2/'\nVERBOSE = False\ndef main(parameters, arguments):\n    \"\"\"Main entry point.\n    :param parameters: Command line parameters.\n    :param arguments: Command line arguments.\n    \"\"\"",
+        "detail": "plugin_upload",
+        "documentation": {}
+    },
+    {
+        "label": "SERVER",
+        "kind": 5,
+        "importPath": "plugin_upload",
+        "description": "plugin_upload",
+        "peekOfCode": "SERVER = 'plugins.qgis.org'\nPORT = '443'\nENDPOINT = '/plugins/RPC2/'\nVERBOSE = False\ndef main(parameters, arguments):\n    \"\"\"Main entry point.\n    :param parameters: Command line parameters.\n    :param arguments: Command line arguments.\n    \"\"\"\n    address = \"{protocol}://{username}:{password}@{server}:{port}{endpoint}\".format(",
+        "detail": "plugin_upload",
+        "documentation": {}
+    },
+    {
+        "label": "PORT",
+        "kind": 5,
+        "importPath": "plugin_upload",
+        "description": "plugin_upload",
+        "peekOfCode": "PORT = '443'\nENDPOINT = '/plugins/RPC2/'\nVERBOSE = False\ndef main(parameters, arguments):\n    \"\"\"Main entry point.\n    :param parameters: Command line parameters.\n    :param arguments: Command line arguments.\n    \"\"\"\n    address = \"{protocol}://{username}:{password}@{server}:{port}{endpoint}\".format(\n        protocol=PROTOCOL,",
+        "detail": "plugin_upload",
+        "documentation": {}
+    },
+    {
+        "label": "ENDPOINT",
+        "kind": 5,
+        "importPath": "plugin_upload",
+        "description": "plugin_upload",
+        "peekOfCode": "ENDPOINT = '/plugins/RPC2/'\nVERBOSE = False\ndef main(parameters, arguments):\n    \"\"\"Main entry point.\n    :param parameters: Command line parameters.\n    :param arguments: Command line arguments.\n    \"\"\"\n    address = \"{protocol}://{username}:{password}@{server}:{port}{endpoint}\".format(\n        protocol=PROTOCOL,\n        username=parameters.username,",
+        "detail": "plugin_upload",
+        "documentation": {}
+    },
+    {
+        "label": "VERBOSE",
+        "kind": 5,
+        "importPath": "plugin_upload",
+        "description": "plugin_upload",
+        "peekOfCode": "VERBOSE = False\ndef main(parameters, arguments):\n    \"\"\"Main entry point.\n    :param parameters: Command line parameters.\n    :param arguments: Command line arguments.\n    \"\"\"\n    address = \"{protocol}://{username}:{password}@{server}:{port}{endpoint}\".format(\n        protocol=PROTOCOL,\n        username=parameters.username,\n        password=parameters.password,",
+        "detail": "plugin_upload",
+        "documentation": {}
+    },
+    {
+        "label": "qInitResources",
+        "kind": 2,
+        "importPath": "resources",
+        "description": "resources",
+        "peekOfCode": "def qInitResources():\n    QtCore.qRegisterResourceData(rcc_version, qt_resource_struct, qt_resource_name, qt_resource_data)\ndef qCleanupResources():\n    QtCore.qUnregisterResourceData(rcc_version, qt_resource_struct, qt_resource_name, qt_resource_data)\nqInitResources()",
+        "detail": "resources",
+        "documentation": {}
+    },
+    {
+        "label": "qCleanupResources",
+        "kind": 2,
+        "importPath": "resources",
+        "description": "resources",
+        "peekOfCode": "def qCleanupResources():\n    QtCore.qUnregisterResourceData(rcc_version, qt_resource_struct, qt_resource_name, qt_resource_data)\nqInitResources()",
+        "detail": "resources",
+        "documentation": {}
+    },
+    {
+        "label": "qt_resource_data",
+        "kind": 5,
+        "importPath": "resources",
+        "description": "resources",
+        "peekOfCode": "qt_resource_data = b\"\\\n\\x00\\x04\\x89\\x77\\\n\\x89\\\n\\x50\\x4e\\x47\\x0d\\x0a\\x1a\\x0a\\x00\\x00\\x00\\x0d\\x49\\x48\\x44\\x52\\x00\\\n\\x00\\x10\\xab\\x00\\x00\\x10\\xab\\x08\\x06\\x00\\x00\\x00\\xd0\\xc0\\x34\\x1c\\\n\\x00\\x00\\x00\\x09\\x70\\x48\\x59\\x73\\x00\\x00\\x2e\\x23\\x00\\x00\\x2e\\x23\\\n\\x01\\x78\\xa5\\x3f\\x76\\x00\\x00\\x20\\x00\\x49\\x44\\x41\\x54\\x78\\x9c\\xec\\\n\\xdc\\xcd\\x75\\xda\\x5c\\xa3\\x86\\xe1\\x47\\x67\\x9d\\xb9\\xe9\\xc0\\x74\\x60\\\n\\x3a\\x30\\x1d\\xc4\\x1d\\x1c\\x8f\\x35\\xca\\x48\\x45\\x68\\xf4\\x8e\\x34\\xf6\\\n\\xe9\\x80\\x74\\x40\\x3a\\xc0\\x1d\\xe0\\x0e\\x70\\x05\\xfa\\x06\\xc2\\x1f\\x38\\",
+        "detail": "resources",
+        "documentation": {}
+    },
+    {
+        "label": "qt_resource_name",
+        "kind": 5,
+        "importPath": "resources",
+        "description": "resources",
+        "peekOfCode": "qt_resource_name = b\"\\\n\\x00\\x07\\\n\\x07\\x3b\\xe0\\xb3\\\n\\x00\\x70\\\n\\x00\\x6c\\x00\\x75\\x00\\x67\\x00\\x69\\x00\\x6e\\x00\\x73\\\n\\x00\\x0b\\\n\\x08\\x9d\\xad\\x03\\\n\\x00\\x4c\\\n\\x00\\x61\\x00\\x79\\x00\\x65\\x00\\x72\\x00\\x5f\\x00\\x41\\x00\\x74\\x00\\x6c\\x00\\x61\\x00\\x73\\\n\\x00\\x08\\",
+        "detail": "resources",
+        "documentation": {}
+    },
+    {
+        "label": "qt_resource_struct_v1",
+        "kind": 5,
+        "importPath": "resources",
+        "description": "resources",
+        "peekOfCode": "qt_resource_struct_v1 = b\"\\\n\\x00\\x00\\x00\\x00\\x00\\x02\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x01\\\n\\x00\\x00\\x00\\x00\\x00\\x02\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x02\\\n\\x00\\x00\\x00\\x14\\x00\\x02\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x03\\\n\\x00\\x00\\x00\\x30\\x00\\x00\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x00\\\n\"\nqt_resource_struct_v2 = b\"\\\n\\x00\\x00\\x00\\x00\\x00\\x02\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x01\\\n\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\\n\\x00\\x00\\x00\\x00\\x00\\x02\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x02\\",
+        "detail": "resources",
+        "documentation": {}
+    },
+    {
+        "label": "qt_resource_struct_v2",
+        "kind": 5,
+        "importPath": "resources",
+        "description": "resources",
+        "peekOfCode": "qt_resource_struct_v2 = b\"\\\n\\x00\\x00\\x00\\x00\\x00\\x02\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x01\\\n\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\\n\\x00\\x00\\x00\\x00\\x00\\x02\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x02\\\n\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\\n\\x00\\x00\\x00\\x14\\x00\\x02\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x03\\\n\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\\n\\x00\\x00\\x00\\x30\\x00\\x00\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x00\\\n\\x00\\x00\\x01\\x90\\x7d\\x4b\\x25\\xa8\\\n\"",
+        "detail": "resources",
+        "documentation": {}
+    },
+    {
+        "label": "qt_version",
+        "kind": 5,
+        "importPath": "resources",
+        "description": "resources",
+        "peekOfCode": "qt_version = [int(v) for v in QtCore.qVersion().split('.')]\nif qt_version < [5, 8, 0]:\n    rcc_version = 1\n    qt_resource_struct = qt_resource_struct_v1\nelse:\n    rcc_version = 2\n    qt_resource_struct = qt_resource_struct_v2\ndef qInitResources():\n    QtCore.qRegisterResourceData(rcc_version, qt_resource_struct, qt_resource_name, qt_resource_data)\ndef qCleanupResources():",
+        "detail": "resources",
+        "documentation": {}
+    }
+]
