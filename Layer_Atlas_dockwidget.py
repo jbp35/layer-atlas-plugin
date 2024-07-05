@@ -25,15 +25,16 @@
 import os
 
 from qgis.gui import QgsDockWidget, QgisInterface
-from qgis.PyQt import uic
+from qgis.PyQt import uic, QtWidgets
 from qgis.PyQt.QtWebEngineWidgets import QWebEngineView
 from PyQt5.QtWebChannel import QWebChannel
 from qgis.PyQt.QtCore import QUrl, Qt, pyqtSignal
 
 from .src.backend import Backend
 
-FORM_CLASS, _ = uic.loadUiType(os.path.join(
-    os.path.dirname(__file__), 'Layer_Atlas_dockwidget_base.ui'))
+FORM_CLASS, _ = uic.loadUiType(
+    os.path.join(os.path.dirname(__file__), "Layer_Atlas_dockwidget_base.ui")
+)
 
 
 class LayerAtlasDockWidget(QgsDockWidget, FORM_CLASS):
@@ -51,21 +52,21 @@ class LayerAtlasDockWidget(QgsDockWidget, FORM_CLASS):
 
         self.view = CustomWebEngineView()
         self.setWidget(self.view)
-        
-    # # For dev only
-    # def keyPressEvent(self, event):
-    #     if event.key() == Qt.Key_F10:
-    #         self.debug_window = QtWidgets.QDialog()
-    #         self.dev_view = CustomWebEngineView()
-    #         debug_layout = QtWidgets.QHBoxLayout()
-    #         debug_layout.setContentsMargins(0, 0, 0, 0)
-    #         debug_layout.addWidget(self.dev_view)
-    #         self.debug_window.setLayout(debug_layout)
-    #         self.view.page().setDevToolsPage(self.dev_view.page())
-    #         self.debug_window.show()
 
-    #     if event.key() == Qt.Key_F5:
-    #         self.view.reload()
+    # # For dev only
+    def keyPressEvent(self, event):
+        if event.key() == Qt.Key_F10:
+            self.debug_window = QtWidgets.QDialog()
+            self.dev_view = CustomWebEngineView()
+            debug_layout = QtWidgets.QHBoxLayout()
+            debug_layout.setContentsMargins(0, 0, 0, 0)
+            debug_layout.addWidget(self.dev_view)
+            self.debug_window.setLayout(debug_layout)
+            self.view.page().setDevToolsPage(self.dev_view.page())
+            self.debug_window.show()
+
+        if event.key() == Qt.Key_F5:
+            self.view.reload()
 
 
 class CustomWebEngineView(QWebEngineView):
@@ -80,8 +81,8 @@ class CustomWebEngineView(QWebEngineView):
         self.page().setWebChannel(self.channel)
         self.channel.registerObject("backend", self.backend)
 
-        url = QUrl("http://localhost:9000/")
-        # url = QUrl("https://main.d14mu6vxpysgnb.amplifyapp.com/")
+        # url = QUrl("http://localhost:9000/")
+        url = QUrl("https://www.layeratlas.com/")
 
         self.setUrl(url)
 
