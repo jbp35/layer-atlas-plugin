@@ -393,6 +393,14 @@
         "documentation": {}
     },
     {
+        "label": "QtWidgets",
+        "importPath": "qgis.PyQt",
+        "description": "qgis.PyQt",
+        "isExtraImport": true,
+        "detail": "qgis.PyQt",
+        "documentation": {}
+    },
+    {
         "label": "QWebEngineView",
         "importPath": "qgis.PyQt.QtWebEngineWidgets",
         "description": "qgis.PyQt.QtWebEngineWidgets",
@@ -1284,7 +1292,7 @@
         "kind": 6,
         "importPath": "Layer_Atlas_dockwidget",
         "description": "Layer_Atlas_dockwidget",
-        "peekOfCode": "class CustomWebEngineView(QWebEngineView):\n    def __init__(self, *args, **kwargs):\n        super(CustomWebEngineView, self).__init__(*args, **kwargs)\n        self.setAcceptDrops(True)\n        self.setContextMenuPolicy(Qt.NoContextMenu)\n        self.backend = Backend()\n        self.channel = QWebChannel()\n        self.page().setWebChannel(self.channel)\n        self.channel.registerObject(\"backend\", self.backend)\n        url = QUrl(\"http://localhost:9000/\")",
+        "peekOfCode": "class CustomWebEngineView(QWebEngineView):\n    def __init__(self, *args, **kwargs):\n        super(CustomWebEngineView, self).__init__(*args, **kwargs)\n        self.setAcceptDrops(True)\n        self.setContextMenuPolicy(Qt.NoContextMenu)\n        self.backend = Backend()\n        self.channel = QWebChannel()\n        self.page().setWebChannel(self.channel)\n        self.channel.registerObject(\"backend\", self.backend)\n        # url = QUrl(\"http://localhost:9000/?qgis=true\")",
         "detail": "Layer_Atlas_dockwidget",
         "documentation": {}
     },

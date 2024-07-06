@@ -81,8 +81,8 @@ class CustomWebEngineView(QWebEngineView):
         self.page().setWebChannel(self.channel)
         self.channel.registerObject("backend", self.backend)
 
-        # url = QUrl("http://localhost:9000/")
-        url = QUrl("https://www.layeratlas.com/")
+        # url = QUrl("http://localhost:9000/?qgis=true")
+        url = QUrl("https://www.layeratlas.com/?qgis=true")
 
         self.setUrl(url)
 
