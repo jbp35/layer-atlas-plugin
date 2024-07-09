@@ -34,6 +34,11 @@ try:
     from qgis.PyQt.QtWebEngineWidgets import QWebEngineView
 except ImportError:
     try:
+        QgsMessageLog.logMessage(
+            "Failed to import QWebEngineView from Qgis. Trying to fallback on PyQt5.",
+            "Layer Atlas",
+            level=Qgis.Info,
+        )
         from PyQt5.QtWebEngineWidgets import QWebEngineView
     except ImportError:
         QgsMessageLog.logMessage(
@@ -46,6 +51,11 @@ try:
     from qgis.PyQt.QtWebChannel import QWebChannel
 except ImportError:
     try:
+        QgsMessageLog.logMessage(
+            "Failed to import QWebChannel from Qgis. Trying to fallback on PyQt5.",
+            "Layer Atlas",
+            level=Qgis.Info,
+        )
         from PyQt5.QtWebChannel import QWebChannel
     except ImportError:
         QgsMessageLog.logMessage(
@@ -53,7 +63,6 @@ except ImportError:
             "Layer Atlas",
             level=Qgis.Critical,
         )
-
 
 from .src.backend import Backend
 
