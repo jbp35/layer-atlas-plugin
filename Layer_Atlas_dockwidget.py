@@ -26,9 +26,34 @@ import os
 
 from qgis.gui import QgsDockWidget, QgisInterface
 from qgis.PyQt import uic, QtWidgets
-from qgis.PyQt.QtWebEngineWidgets import QWebEngineView
-from PyQt5.QtWebChannel import QWebChannel
+
 from qgis.PyQt.QtCore import QUrl, Qt, pyqtSignal
+from qgis.core import QgsMessageLog, Qgis
+
+try:
+    from qgis.PyQt.QtWebEngineWidgets import QWebEngineView
+except ImportError:
+    try:
+        from PyQt5.QtWebEngineWidgets import QWebEngineView
+    except ImportError:
+        QgsMessageLog.logMessage(
+            "Failed to import QWebEngineView. Try reinstalling QGIS using Osgeo4W installer.",
+            "Layer Atlas",
+            level=Qgis.Critical,
+        )
+
+try:
+    from qgis.PyQt.QtWebChannel import QWebChannel
+except ImportError:
+    try:
+        from PyQt5.QtWebChannel import QWebChannel
+    except ImportError:
+        QgsMessageLog.logMessage(
+            "Failed to import QWebChannel. Try reinstalling QGIS using Osgeo4W installer.",
+            "Layer Atlas",
+            level=Qgis.Critical,
+        )
+
 
 from .src.backend import Backend
 
