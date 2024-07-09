@@ -30,39 +30,20 @@ from qgis.PyQt import uic, QtWidgets
 from qgis.PyQt.QtCore import QUrl, Qt, pyqtSignal
 from qgis.core import QgsMessageLog, Qgis
 
+
+# Attempt to import QWebEngineView globally and set a flag
 try:
     from qgis.PyQt.QtWebEngineWidgets import QWebEngineView
+    QWebEngineView_available = True
 except ImportError:
-    try:
-        QgsMessageLog.logMessage(
-            "Failed to import QWebEngineView from Qgis. Trying to fallback on PyQt5.",
-            "Layer Atlas",
-            level=Qgis.Info,
-        )
-        from PyQt5.QtWebEngineWidgets import QWebEngineView
-    except ImportError:
-        QgsMessageLog.logMessage(
-            "Failed to import QWebEngineView. Try reinstalling QGIS using OSGeo4W installer.",
-            "Layer Atlas",
-            level=Qgis.Critical,
-        )
+    QWebEngineView_available = False
+    QgsMessageLog.logMessage(
+        "Failed to import QWebEngineView. Make sure you installed required dependencies (https://github.com/jbp35/layer-atlas-plugin)",
+        "Layer Atlas",
+        level=Qgis.Critical,
+    )
 
-try:
-    from qgis.PyQt.QtWebChannel import QWebChannel
-except ImportError:
-    try:
-        QgsMessageLog.logMessage(
-            "Failed to import QWebChannel from Qgis. Trying to fallback on PyQt5.",
-            "Layer Atlas",
-            level=Qgis.Info,
-        )
-        from PyQt5.QtWebChannel import QWebChannel
-    except ImportError:
-        QgsMessageLog.logMessage(
-            "Failed to import QWebChannel. Try reinstalling QGIS using OSGeo4W installer.",
-            "Layer Atlas",
-            level=Qgis.Critical,
-        )
+from PyQt5.QtWebChannel import QWebChannel
 
 from .src.backend import Backend
 
@@ -83,8 +64,12 @@ class LayerAtlasDockWidget(QgsDockWidget, FORM_CLASS):
         self.setWindowTitle(self.tr("Layer Atlas"))
 
         self.setAllowedAreas(Qt.LeftDockWidgetArea | Qt.RightDockWidgetArea)
+        
+        if QWebEngineView_available:
+            self.view = CustomWebEngineView()
+        else:
+            self.view = getInstallationGuide()
 
-        self.view = CustomWebEngineView()
         self.setWidget(self.view)
 
     # # For dev only
@@ -101,34 +86,47 @@ class LayerAtlasDockWidget(QgsDockWidget, FORM_CLASS):
 
         if event.key() == Qt.Key_F5:
             self.view.reload()
+                  
+
+# Only define CustomWebEngineView if QWebEngineView is available
+if QWebEngineView_available:
+    class CustomWebEngineView(QWebEngineView):
+        def __init__(self, *args, **kwargs):
+            super(CustomWebEngineView, self).__init__(*args, **kwargs)
+
+            self.setAcceptDrops(True)
+            self.setContextMenuPolicy(Qt.NoContextMenu)
+
+            self.backend = Backend()
+            self.channel = QWebChannel()
+            self.page().setWebChannel(self.channel)
+            self.channel.registerObject("backend", self.backend)
+
+            # url = QUrl("http://localhost:9000/?qgis=true")
+            url = QUrl("https://www.layeratlas.com/?qgis=true")
+
+            self.setUrl(url)
+
+        def dragEnterEvent(self, event):
+            event.accept()
+
+        def dropEvent(self, event):
+            # TODO: check mimeData type
+            layer_definition = event.mimeData().data(
+                "application/qgis.layertree.layerdefinitions"
+            )
+            xml_data = layer_definition.data().decode("utf-8")
+            self.backend.EmitCreateLayer.emit(xml_data)
+
+            event.ignore()
 
 
-class CustomWebEngineView(QWebEngineView):
-    def __init__(self, *args, **kwargs):
-        super(CustomWebEngineView, self).__init__(*args, **kwargs)
-
-        self.setAcceptDrops(True)
-        self.setContextMenuPolicy(Qt.NoContextMenu)
-
-        self.backend = Backend()
-        self.channel = QWebChannel()
-        self.page().setWebChannel(self.channel)
-        self.channel.registerObject("backend", self.backend)
-
-        # url = QUrl("http://localhost:9000/?qgis=true")
-        url = QUrl("https://www.layeratlas.com/?qgis=true")
-
-        self.setUrl(url)
-
-    def dragEnterEvent(self, event):
-        event.accept()
-
-    def dropEvent(self, event):
-        # TODO: check mimeData type
-        layer_definition = event.mimeData().data(
-            "application/qgis.layertree.layerdefinitions"
-        )
-        xml_data = layer_definition.data().decode("utf-8")
-        self.backend.EmitCreateLayer.emit(xml_data)
-
-        event.ignore()
+def getInstallationGuide():
+    readme_viewer = QtWidgets.QTextEdit()
+    readme_viewer.setReadOnly(True)
+    current_file_dir = os.path.dirname(os.path.abspath(__file__))
+    readme_path = os.path.join(current_file_dir, "missing_QWebEngineView.html")
+    with open(readme_path, "r", encoding="utf-8") as file:
+        readme_viewer.setHtml(file.read())
+    
+    return readme_viewer
