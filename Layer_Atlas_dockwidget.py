@@ -37,7 +37,7 @@ except ImportError:
         from PyQt5.QtWebEngineWidgets import QWebEngineView
     except ImportError:
         QgsMessageLog.logMessage(
-            "Failed to import QWebEngineView. Try reinstalling QGIS using Osgeo4W installer.",
+            "Failed to import QWebEngineView. Try reinstalling QGIS using OSGeo4W installer.",
             "Layer Atlas",
             level=Qgis.Critical,
         )
@@ -49,7 +49,7 @@ except ImportError:
         from PyQt5.QtWebChannel import QWebChannel
     except ImportError:
         QgsMessageLog.logMessage(
-            "Failed to import QWebChannel. Try reinstalling QGIS using Osgeo4W installer.",
+            "Failed to import QWebChannel. Try reinstalling QGIS using OSGeo4W installer.",
             "Layer Atlas",
             level=Qgis.Critical,
         )
