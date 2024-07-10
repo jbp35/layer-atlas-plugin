@@ -2,6 +2,19 @@
 
 This guide will help you set up Layer Atlas by ensuring all necessary dependencies are installed. Please follow the instructions according to the method you used to install QGIS.
 
+
+## About Layer Atlas
+
+Discover and share geospatial map layers effortlessly with the new Layer Atlas plugin for QGIS. This powerful tool enables fast and precise searches ensuring you find the layers you need quickly. Preview layers directly within QGIS to assess suitability, and conveniently add them to your project with a simple drag-and-drop interface. Save frequently used layers to your favorites for easy access, streamlining your workflow and enhancing collaboration in geospatial projects.
+
+
+Watch a short video of Layer Atlas to see the plugin in action:
+
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/k5k74faBJKo/0.jpg)](https://www.youtube.com/watch?v=k5k74faBJKo)
+
+
+
 ## Prerequisites
 
 Layer Atlas requires the installation of extra dependencies. Ensure you have administrative access on your system to perform these installations.
