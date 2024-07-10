@@ -28,6 +28,7 @@ from qgis.PyQt.QtWidgets import QAction
 
 # Initialize Qt resources from file resources.py
 from .resources import *
+
 # Import the code for the DockWidget
 from .Layer_Atlas_dockwidget import LayerAtlasDockWidget
 import os.path
@@ -51,11 +52,10 @@ class LayerAtlas:
         self.plugin_dir = os.path.dirname(__file__)
 
         # initialize locale
-        locale = QSettings().value('locale/userLocale')[0:2]
+        locale = QSettings().value("locale/userLocale")[0:2]
         locale_path = os.path.join(
-            self.plugin_dir,
-            'i18n',
-            'LayerAtlas_{}.qm'.format(locale))
+            self.plugin_dir, "i18n", "LayerAtlas_{}.qm".format(locale)
+        )
 
         if os.path.exists(locale_path):
             self.translator = QTranslator()
@@ -64,17 +64,16 @@ class LayerAtlas:
 
         # Declare instance attributes
         self.actions = []
-        self.menu = self.tr(u'&Layer Atlas')
-        
-        # TODO: We are going to let the user set this up in a future iteration
-        self.toolbar = self.iface.addToolBar(u'LayerAtlas')
-        self.toolbar.setObjectName(u'LayerAtlas')
+        self.menu = self.tr("&Layer Atlas")
 
-        #print "** INITIALIZING LayerAtlas"
+        # TODO: We are going to let the user set this up in a future iteration
+        self.toolbar = self.iface.addToolBar("LayerAtlas")
+        self.toolbar.setObjectName("LayerAtlas")
+
+        # print "** INITIALIZING LayerAtlas"
 
         self.pluginIsActive = False
         self.dockwidget = None
-
 
     # noinspection PyMethodMayBeStatic
     def tr(self, message):
@@ -89,8 +88,7 @@ class LayerAtlas:
         :rtype: QString
         """
         # noinspection PyTypeChecker,PyArgumentList,PyCallByClass
-        return QCoreApplication.translate('LayerAtlas', message)
-
+        return QCoreApplication.translate("LayerAtlas", message)
 
     def add_action(
         self,
@@ -102,7 +100,8 @@ class LayerAtlas:
         add_to_toolbar=True,
         status_tip=None,
         whats_this=None,
-        parent=None):
+        parent=None,
+    ):
         """Add a toolbar icon to the toolbar.
 
         :param icon_path: Path to the icon for this action. Can be a resource
@@ -146,7 +145,7 @@ class LayerAtlas:
         action = QAction(icon, text, parent)
         action.triggered.connect(callback)
         action.setEnabled(enabled_flag)
-        
+
         # Create a keyboard shortcut for the action
         action.setShortcut(QKeySequence(Qt.Key_Tab))
 
@@ -160,40 +159,36 @@ class LayerAtlas:
             self.toolbar.addAction(action)
 
         if add_to_menu:
-            self.iface.addPluginToWebMenu(
-                self.menu,
-                action)
+            self.iface.addPluginToWebMenu(self.menu, action)
 
         self.actions.append(action)
 
         return action
 
-
     def initGui(self):
         """Create the menu entries and toolbar icons inside the QGIS GUI."""
 
-        icon_path = ':/plugins/Layer_Atlas/icon.png'
+        icon_path = ":/plugins/Layer_Atlas/icon.png"
         self.add_action(
             icon_path,
-            text=self.tr(u'Layer Atlas (Tab)'),
+            text=self.tr("Layer Atlas (Tab)"),
             callback=self.run,
-            parent=self.iface.mainWindow())
-        
+            parent=self.iface.mainWindow(),
+        )
+
         # will be set False in run()
         self.first_start = True
         self.run()
-        
 
     def unload(self):
         """Removes the plugin menu item and icon from QGIS GUI."""
+        self.dockwidget.cleanup()
+
         for action in self.actions:
-            self.iface.removePluginWebMenu(
-                self.tr(u'&Layer Atlas'),
-                action)
+            self.iface.removePluginWebMenu(self.tr("&Layer Atlas"), action)
             self.iface.removeToolBarIcon(action)
         # remove the toolbar
         del self.toolbar
-
 
     def run(self):
         """Run method that loads and starts the plugin"""
@@ -202,9 +197,8 @@ class LayerAtlas:
             self.dockwidget = LayerAtlasDockWidget(self.iface)
             self.iface.addDockWidget(Qt.RightDockWidgetArea, self.dockwidget)
             self.first_start = False
-            
+
         if self.dockwidget.isVisible() == True:
             self.dockwidget.hide()
         else:
             self.dockwidget.show()
-
