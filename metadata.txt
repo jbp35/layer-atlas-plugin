@@ -4,7 +4,7 @@
 
 [general]
 name=Layer Atlas
-qgisMinimumVersion=3.36
+qgisMinimumVersion=3.38
 description=Discover and share geospatial layers easily within QGIS
 version=1.0
 author=Atelier JBP
