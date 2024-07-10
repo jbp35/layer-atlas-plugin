@@ -80,17 +80,29 @@ class LayerAtlasDockWidget(QgsDockWidget, FORM_CLASS):
         self.setWidget(self.view)
 
         # Add a custom action to upload raster layers
-        self.action = QtWidgets.QAction("Add layer to Layer Atlas")
-        self.action.triggered.connect(self.view.addLayerToLayerAtlas)
-        self.iface.addCustomActionForLayerType(
-            self.action, None, QgsMapLayerType.RasterLayer, True
-        )
+
+        self.contextMenuActions = []
+
+        self.layer_types = [
+            QgsMapLayerType.RasterLayer,
+            QgsMapLayerType.VectorLayer,
+            QgsMapLayerType.PluginLayer,
+            QgsMapLayerType.MeshLayer,
+            QgsMapLayerType.VectorTileLayer,
+            QgsMapLayerType.PointCloudLayer,
+        ]
+
+        for layer_type in self.layer_types:
+            action = QtWidgets.QAction("Add layer to Layer Atlas")
+            action.triggered.connect(self.view.addLayerToLayerAtlas)
+            self.iface.addCustomActionForLayerType(action, None, layer_type, True)
+            self.contextMenuActions.append(action)
 
     # # For dev only
     def keyPressEvent(self, event):
         if event.key() == Qt.Key_F10:
             self.debug_window = QtWidgets.QDialog()
-            self.dev_view = CustomWebEngineView()
+            self.dev_view = CustomWebEngineView(self.iface)
             debug_layout = QtWidgets.QHBoxLayout()
             debug_layout.setContentsMargins(0, 0, 0, 0)
             debug_layout.addWidget(self.dev_view)
@@ -102,7 +114,8 @@ class LayerAtlasDockWidget(QgsDockWidget, FORM_CLASS):
             self.view.reload()
 
     def cleanup(self):
-        self.iface.removeCustomActionForLayerType(self.action)
+        for action in self.contextMenuActions:
+            self.iface.removeCustomActionForLayerType(action)
 
 
 # Only define CustomWebEngineView if QWebEngineView is available
