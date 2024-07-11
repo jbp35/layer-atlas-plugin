@@ -39,7 +39,7 @@ from qgis.core import (
 
 # Attempt to import QWebEngineView and set a flag
 try:
-    from qgis.PyQt.QtWebEngineWidgets import QWebEngineView
+    from qgis.PyQt.QtWebEngineWidgets import QWebEngineView, QWebEngineSettings
 
     QWebEngineView_available = True
 except ImportError:
@@ -127,6 +127,12 @@ if QWebEngineView_available:
             self.iface = _iface
             self.setAcceptDrops(True)
             self.setContextMenuPolicy(Qt.NoContextMenu)
+            
+            settings = self.settings()
+            settings.setAttribute(QWebEngineSettings.JavascriptEnabled, True)
+            settings.setAttribute(QWebEngineSettings.LocalStorageEnabled, True)
+            settings.setAttribute(QWebEngineSettings.JavascriptCanOpenWindows, True)
+            settings.setAttribute(QWebEngineSettings.WebGLEnabled, True)
 
             # Configure QWebChannel
             self.backend = Backend()
