@@ -23,46 +23,27 @@
 """
 
 import os
-import tempfile
 
 from qgis.gui import QgsDockWidget, QgisInterface
 from qgis.PyQt import uic, QtWidgets
 
-from qgis.PyQt.QtCore import QUrl, Qt, pyqtSignal
-from qgis.core import (
-    QgsMessageLog,
-    Qgis,
-    QgsMapLayerType,
-    QgsLayerDefinition,
-)
+from qgis.PyQt.QtCore import Qt, pyqtSignal
+from qgis.core import (QgsMessageLog, QgsMapLayerType,)
+from .src.customWebEngineView import CustomWebEngineView
 
-
-# Attempt to import QWebEngineView and set a flag
 try:
-    from qgis.PyQt.QtWebEngineWidgets import QWebEngineView, QWebEngineSettings
-
+    from .src.customWebEngineView import CustomWebEngineView
     QWebEngineView_available = True
 except ImportError:
     QWebEngineView_available = False
-    QgsMessageLog.logMessage(
-        "Failed to import QWebEngineView. Make sure you installed required dependencies (https://github.com/jbp35/layer-atlas-plugin)",
-        "Layer Atlas",
-        level=Qgis.Critical,
-    )
-
-from PyQt5.QtWebChannel import QWebChannel
-
-from .src.backend import Backend
 
 FORM_CLASS, _ = uic.loadUiType(
     os.path.join(os.path.dirname(__file__), "Layer_Atlas_dockwidget_base.ui")
 )
 
-
 class LayerAtlasDockWidget(QgsDockWidget, FORM_CLASS):
-
     closingPlugin = pyqtSignal()
-
+    
     def __init__(self, _iface: QgisInterface = None):
         """Constructor."""
         super().__init__()
@@ -73,33 +54,33 @@ class LayerAtlasDockWidget(QgsDockWidget, FORM_CLASS):
 
         if QWebEngineView_available:
             self.view = CustomWebEngineView(self.iface)
+            self.add_custom_actions_to_layer_tree()
         else:
             # Show a message if QWebEngineView is not available
-            self.view = getInstallationGuide()
+            from .src.dependencies import get_html_page
+            self.view = get_html_page()
 
-        self.setWidget(self.view)
-
-        # Add a custom action to upload raster layers
-
+        self.setWidget(self.view) 
+            
+    def add_custom_actions_to_layer_tree(self):
+        """Add custom actions to the layer tree context menu for uploading layers to Layer Atlas."""
         self.contextMenuActions = []
-
-        self.layer_types = [
-            QgsMapLayerType.RasterLayer,
-            QgsMapLayerType.VectorLayer,
-            QgsMapLayerType.PluginLayer,
-            QgsMapLayerType.MeshLayer,
-            QgsMapLayerType.VectorTileLayer,
-            QgsMapLayerType.PointCloudLayer,
-        ]
-
-        for layer_type in self.layer_types:
-            action = QtWidgets.QAction("Add layer to Layer Atlas")
-            action.triggered.connect(self.view.addLayerToLayerAtlas)
-            self.iface.addCustomActionForLayerType(action, None, layer_type, True)
-            self.contextMenuActions.append(action)
-
-    # # For dev only
+        for layer_type in QgsMapLayerType:
+            uploadAction = QtWidgets.QAction("Upload layer to Layer Atlas")
+            uploadAction.triggered.connect(self.view.add_layer_to_layer_atlas)
+            self.iface.addCustomActionForLayerType(uploadAction, None, layer_type, True)
+            self.contextMenuActions.append(uploadAction)
+            
+    def remove_custom_actions_from_layer_tree(self):
+        """Removes custom actions from the layer tree context menu."""
+        for uploadAction in self.contextMenuActions:
+            self.iface.removeCustomActionForLayerType(uploadAction)
+        self.contextMenuActions = []
+        
+    
     def keyPressEvent(self, event):
+        """Handle key press events for debugging and reloading the plugin."""
+        
         if event.key() == Qt.Key_F10:
             self.debug_window = QtWidgets.QDialog()
             self.dev_view = CustomWebEngineView(self.iface)
@@ -113,68 +94,11 @@ class LayerAtlasDockWidget(QgsDockWidget, FORM_CLASS):
         if event.key() == Qt.Key_F5:
             self.view.reload()
 
+
     def cleanup(self):
-        for action in self.contextMenuActions:
-            self.iface.removeCustomActionForLayerType(action)
+        """Cleanup the plugin on close."""
+        self.remove_custom_actions_from_layer_tree()
 
 
-# Only define CustomWebEngineView if QWebEngineView is available
-if QWebEngineView_available:
-
-    class CustomWebEngineView(QWebEngineView):
-        def __init__(self, _iface, *args, **kwargs):
-            super(CustomWebEngineView, self).__init__(*args, **kwargs)
-            self.iface = _iface
-            self.setAcceptDrops(True)
-            self.setContextMenuPolicy(Qt.NoContextMenu)
-            
-            settings = self.settings()
-            settings.setAttribute(QWebEngineSettings.JavascriptEnabled, True)
-            settings.setAttribute(QWebEngineSettings.LocalStorageEnabled, True)
-            settings.setAttribute(QWebEngineSettings.JavascriptCanOpenWindows, True)
-            settings.setAttribute(QWebEngineSettings.WebGLEnabled, True)
-
-            # Configure QWebChannel
-            self.backend = Backend()
-            self.channel = QWebChannel()
-            self.page().setWebChannel(self.channel)
-            self.channel.registerObject("backend", self.backend)
-
-            # url = QUrl("http://localhost:9000/?qgis=true")
-            url = QUrl("https://www.layeratlas.com/?qgis=true")
-
-            self.setUrl(url)
-
-        def dragEnterEvent(self, event):
-            event.accept()
-
-        def dropEvent(self, event):
-            # TODO: check mimeData type
-            layer_definition = event.mimeData().data(
-                "application/qgis.layertree.layerdefinitions"
-            )
-            xml_data = layer_definition.data().decode("utf-8")
-            self.backend.EmitCreateLayer.emit(xml_data)
-
-            event.ignore()
-
-        def addLayerToLayerAtlas(self):
-            layerTreeView = self.iface.layerTreeView()
-            selectedNodes = layerTreeView.selectedNodes()
-            temp_file_path = "temp.qlr"
-            QgsLayerDefinition.exportLayerDefinition(temp_file_path, [selectedNodes[0]])
-            with open(temp_file_path, "r") as file:
-                layer_definition_xml = file.read()
-                self.backend.EmitCreateLayer.emit(layer_definition_xml)
-            os.remove(temp_file_path)
 
 
-def getInstallationGuide():
-    readme_viewer = QtWidgets.QTextEdit()
-    readme_viewer.setReadOnly(True)
-    current_file_dir = os.path.dirname(os.path.abspath(__file__))
-    readme_path = os.path.join(current_file_dir, "missing_QWebEngineView.html")
-    with open(readme_path, "r", encoding="utf-8") as file:
-        readme_viewer.setHtml(file.read())
-
-    return readme_viewer
