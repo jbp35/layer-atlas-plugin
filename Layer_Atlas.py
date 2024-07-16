@@ -68,7 +68,7 @@ class LayerAtlas:
 
         # TODO: We are going to let the user set this up in a future iteration
         self.toolbar = self.iface.addToolBar("LayerAtlas")
-        self.toolbar.setObjectName("LayerAtlas")
+        self.toolbar.setObjectName("Layer Atlas")
 
         # print "** INITIALIZING LayerAtlas"
 
@@ -168,7 +168,7 @@ class LayerAtlas:
     def initGui(self):
         """Create the menu entries and toolbar icons inside the QGIS GUI."""
 
-        icon_path = ":/plugins/Layer_Atlas/icon.png"
+        icon_path = ":/assets/icons/layer_atlas.png"
         self.add_action(
             icon_path,
             text=self.tr("Layer Atlas (Tab)"),
@@ -178,11 +178,10 @@ class LayerAtlas:
 
         # will be set False in run()
         self.first_start = True
-        self.run()
 
     def unload(self):
         """Removes the plugin menu item and icon from QGIS GUI."""
-        self.dockwidget.cleanup()
+        self.dockwidget.cleanup_on_close()
 
         for action in self.actions:
             self.iface.removePluginWebMenu(self.tr("&Layer Atlas"), action)

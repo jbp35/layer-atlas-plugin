@@ -26,16 +26,10 @@ import os
 
 from qgis.gui import QgsDockWidget, QgisInterface
 from qgis.PyQt import uic, QtWidgets
+from qgis.PyQt.QtGui import QIcon
 
 from qgis.PyQt.QtCore import Qt, pyqtSignal
-from qgis.core import (QgsMessageLog, QgsMapLayerType,)
-from .src.customWebEngineView import CustomWebEngineView
-
-try:
-    from .src.customWebEngineView import CustomWebEngineView
-    QWebEngineView_available = True
-except ImportError:
-    QWebEngineView_available = False
+from qgis.core import QgsMapLayerType
 
 FORM_CLASS, _ = uic.loadUiType(
     os.path.join(os.path.dirname(__file__), "Layer_Atlas_dockwidget_base.ui")
@@ -51,27 +45,47 @@ class LayerAtlasDockWidget(QgsDockWidget, FORM_CLASS):
         self.setObjectName("LayerAtlasPlugin")
         self.setWindowTitle(self.tr("Layer Atlas"))
         self.setAllowedAreas(Qt.LeftDockWidgetArea | Qt.RightDockWidgetArea)
+        
+        self.plugin_dir = os.path.dirname(os.path.realpath(__file__))
 
-        if QWebEngineView_available:
+        try:
+            from .src.custom_web_engine_view import CustomWebEngineView
             self.view = CustomWebEngineView(self.iface)
-            self.add_custom_actions_to_layer_tree()
-        else:
-            # Show a message if QWebEngineView is not available
-            from .src.dependencies import get_html_page
-            self.view = get_html_page()
+            self.add_actions_layer_tree()
+            self.setWidget(self.view) 
 
-        self.setWidget(self.view) 
-            
-    def add_custom_actions_to_layer_tree(self):
+        except ImportError:
+            # if PyqtWebEngine not available, try to install it
+            from .src.manage_dependencies import confirm_install
+            if confirm_install():
+                self.install_dependencies()
+            else:
+                # Show a message if user doesn't want to install
+                from .src.manage_dependencies import get_html_page
+                self.container = QtWidgets.QWidget()
+                self.setWidget(self.container) 
+                self.layout = QtWidgets.QVBoxLayout(self.container)
+
+                self.view = get_html_page(self.plugin_dir)
+                self.layout.addWidget(self.view)
+
+                # Create a button for installing dependencies
+                self.install_deps_button = QtWidgets.QPushButton("Install Dependencies", self)
+                self.install_deps_button.clicked.connect(self.install_dependencies)
+                self.layout.addWidget(self.install_deps_button)
+
+
+    def add_actions_layer_tree(self):
         """Add custom actions to the layer tree context menu for uploading layers to Layer Atlas."""
         self.contextMenuActions = []
         for layer_type in QgsMapLayerType:
-            uploadAction = QtWidgets.QAction("Upload layer to Layer Atlas")
+            uploadAction = QtWidgets.QAction("Add to Layer Atlas")
+            uploadAction.setIcon(QIcon(":/assets/icons/upload_sign.svg"))
             uploadAction.triggered.connect(self.view.add_layer_to_layer_atlas)
             self.iface.addCustomActionForLayerType(uploadAction, None, layer_type, True)
             self.contextMenuActions.append(uploadAction)
             
-    def remove_custom_actions_from_layer_tree(self):
+    def remove_actions_layer_tree(self):
         """Removes custom actions from the layer tree context menu."""
         for uploadAction in self.contextMenuActions:
             self.iface.removeCustomActionForLayerType(uploadAction)
@@ -82,6 +96,7 @@ class LayerAtlasDockWidget(QgsDockWidget, FORM_CLASS):
         """Handle key press events for debugging and reloading the plugin."""
         
         if event.key() == Qt.Key_F10:
+            from .src.custom_web_engine_view import CustomWebEngineView
             self.debug_window = QtWidgets.QDialog()
             self.dev_view = CustomWebEngineView(self.iface)
             debug_layout = QtWidgets.QHBoxLayout()
@@ -95,9 +110,15 @@ class LayerAtlasDockWidget(QgsDockWidget, FORM_CLASS):
             self.view.reload()
 
 
-    def cleanup(self):
+    def cleanup_on_close(self):
         """Cleanup the plugin on close."""
-        self.remove_custom_actions_from_layer_tree()
+        self.remove_actions_layer_tree()
+
+
+    def install_dependencies(self):
+        from .src.manage_dependencies import install_dependencies, restart_qgis
+        install_dependencies(self.plugin_dir)
+        restart_qgis(self.iface)
 
 
 

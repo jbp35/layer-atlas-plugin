@@ -1,12 +1,11 @@
 import os
 
-try:
+try:        
     from qgis.PyQt.QtWebEngineWidgets import QWebEngineView, QWebEngineSettings
-except:
-    from .dependencies import confirm_install, install_dependencies
-    if confirm_install():
-        install_dependencies()
-        
+except ImportError:
+    # Fallback for QGIS < 3.38
+    from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEngineSettings     
+
 from PyQt5.QtWebChannel import QWebChannel
 
 from qgis.PyQt.QtCore import QUrl, Qt
