@@ -47,7 +47,8 @@ class LayerAtlasDockWidget(QgsDockWidget, FORM_CLASS):
         self.setAllowedAreas(Qt.LeftDockWidgetArea | Qt.RightDockWidgetArea)
         
         self.plugin_dir = os.path.dirname(os.path.realpath(__file__))
-
+        self.contextMenuActions = []
+        
         try:
             from .src.custom_web_engine_view import CustomWebEngineView
             self.view = CustomWebEngineView(self.iface)
@@ -77,7 +78,6 @@ class LayerAtlasDockWidget(QgsDockWidget, FORM_CLASS):
 
     def add_actions_layer_tree(self):
         """Add custom actions to the layer tree context menu for uploading layers to Layer Atlas."""
-        self.contextMenuActions = []
         for layer_type in QgsMapLayerType:
             uploadAction = QtWidgets.QAction("Add to Layer Atlas")
             uploadAction.setIcon(QIcon(":/assets/icons/upload_sign.svg"))
