@@ -196,8 +196,8 @@ class LayerAtlas:
             self.dockwidget = LayerAtlasDockWidget(self.iface)
             self.iface.addDockWidget(Qt.RightDockWidgetArea, self.dockwidget)
             self.first_start = False
-
-        if self.dockwidget.isVisible() == True:
-            self.dockwidget.hide()
         else:
-            self.dockwidget.show()
+            if self.dockwidget.isVisible() == True:
+                self.dockwidget.hide()
+            else:
+                self.dockwidget.show()

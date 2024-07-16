@@ -27,7 +27,7 @@ tags=basemap, atlas, collection, layer, map, service, internet, world
 
 homepage=https://www.layeratlase.com
 category=Web
-icon=icon.png
+icon=assets/icons/layer_atlas.png
 # experimental flag
 experimental=False
 
