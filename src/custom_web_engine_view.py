@@ -8,7 +8,7 @@ except ImportError:
 
 from PyQt5.QtWebChannel import QWebChannel
 
-from qgis.PyQt.QtCore import QUrl, Qt
+from qgis.PyQt.QtCore import  Qt
 from qgis.core import QgsLayerDefinition
 
 from .backend import Backend
@@ -31,11 +31,6 @@ class CustomWebEngineView(QWebEngineView):
         self.channel = QWebChannel()
         self.page().setWebChannel(self.channel)
         self.channel.registerObject("backend", self.backend)
-
-        # url = QUrl("http://localhost:9000/?qgis=true")
-        url = QUrl("https://www.layeratlas.com/?qgis=true")
-
-        self.setUrl(url)
 
     def dragEnterEvent(self, event):
         event.accept()

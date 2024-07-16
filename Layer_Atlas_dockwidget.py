@@ -28,7 +28,7 @@ from qgis.gui import QgsDockWidget, QgisInterface
 from qgis.PyQt import uic, QtWidgets
 from qgis.PyQt.QtGui import QIcon
 
-from qgis.PyQt.QtCore import Qt, pyqtSignal
+from qgis.PyQt.QtCore import QUrl, Qt, pyqtSignal
 from qgis.core import QgsMapLayerType
 
 FORM_CLASS, _ = uic.loadUiType(
@@ -48,13 +48,18 @@ class LayerAtlasDockWidget(QgsDockWidget, FORM_CLASS):
         
         self.plugin_dir = os.path.dirname(os.path.realpath(__file__))
         self.contextMenuActions = []
+        self.dev_mode = False
         
         try:
             from .src.custom_web_engine_view import CustomWebEngineView
             self.view = CustomWebEngineView(self.iface)
+            # url = QUrl("http://localhost:9000/?qgis=true")
+            url = QUrl("https://www.layeratlas.com/?qgis=true")
+            self.view.setUrl(url)
+            self.setWidget(self.view)
             self.add_actions_layer_tree()
-            self.setWidget(self.view) 
 
+            
         except ImportError:
             # if PyqtWebEngine not available, try to install it
             from .src.manage_dependencies import confirm_install
@@ -94,8 +99,23 @@ class LayerAtlasDockWidget(QgsDockWidget, FORM_CLASS):
     
     def keyPressEvent(self, event):
         """Handle key press events for debugging and reloading the plugin."""
-        
-        if event.key() == Qt.Key_F10:
+
+        if event.key() == Qt.Key_F1 and event.modifiers() == Qt.ControlModifier:
+            # toogle url dev / prod
+            if self.dev_mode:
+                url = QUrl("https://www.layeratlas.com/?qgis=true")
+            else:
+                url = QUrl("http://localhost:9000/?qgis=true")
+            self.view.setUrl(url)
+            self.dev_mode = not self.dev_mode
+
+
+        if event.key() == Qt.Key_F5 and event.modifiers() == Qt.ControlModifier:
+            # Reload the page
+            self.view.reload()
+            
+        if event.key() == Qt.Key_F10 and event.modifiers() == Qt.ControlModifier:
+            # Open the dev tools
             from .src.custom_web_engine_view import CustomWebEngineView
             self.debug_window = QtWidgets.QDialog()
             self.dev_view = CustomWebEngineView(self.iface)
@@ -105,10 +125,7 @@ class LayerAtlasDockWidget(QgsDockWidget, FORM_CLASS):
             self.debug_window.setLayout(debug_layout)
             self.view.page().setDevToolsPage(self.dev_view.page())
             self.debug_window.show()
-
-        if event.key() == Qt.Key_F5:
-            self.view.reload()
-
+    
 
     def cleanup_on_close(self):
         """Cleanup the plugin on close."""
