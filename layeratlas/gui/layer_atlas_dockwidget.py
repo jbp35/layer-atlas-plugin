@@ -81,7 +81,7 @@ class LayerAtlasDockWidget(QgsDockWidget):
         for layer_type in QgsMapLayerType:
             uploadAction = QtWidgets.QAction("Add to Layer Atlas")
             uploadAction.setIcon(QIcon(":icons/upload_sign.svg"))
-            uploadAction.triggered.connect(self.view.add_layer_to_layer_atlas)
+            uploadAction.triggered.connect(self.add_layer_to_layer_atlas)
             self.iface.addCustomActionForLayerType(uploadAction, None, layer_type, True)
             self.contextMenuActions.append(uploadAction)
 
@@ -90,6 +90,11 @@ class LayerAtlasDockWidget(QgsDockWidget):
         for uploadAction in self.contextMenuActions:
             self.iface.removeCustomActionForLayerType(uploadAction)
         self.contextMenuActions = []
+
+    def add_layer_to_layer_atlas(self):
+        if self.isVisible() == False:
+            self.show()
+        self.view.add_layer_to_layer_atlas()
 
     def keyPressEvent(self, event):
         """Handle key press events for debugging and reloading the plugin."""
