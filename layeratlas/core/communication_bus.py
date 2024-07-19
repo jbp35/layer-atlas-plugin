@@ -4,11 +4,18 @@ import tempfile
 
 from qgis.core import QgsProject, QgsLayerDefinition, QgsSettings
 from qgis.utils import iface
-from qgis.PyQt.QtCore import QObject, pyqtSlot, pyqtSignal, QByteArray, QBuffer, QIODevice
+from qgis.PyQt.QtCore import (
+    QObject,
+    pyqtSlot,
+    pyqtSignal,
+    QByteArray,
+    QBuffer,
+    QIODevice,
+)
 from qgis.PyQt.QtGui import QImage, QPainter
 
 
-class Backend(QObject):
+class CommunicationBus(QObject):
     """
     Handle communication with the QwebEngineView.
     """
@@ -27,19 +34,19 @@ class Backend(QObject):
         Returns:
             bool: True if the layer was successfully added.
         """
-        with tempfile.NamedTemporaryFile(suffix='.qlr', delete=False) as temp_file:
-            temp_file.write(LayerDefinitionXML.encode('utf-8'))
+        with tempfile.NamedTemporaryFile(suffix=".qlr", delete=False) as temp_file:
+            temp_file.write(LayerDefinitionXML.encode("utf-8"))
             temp_file.flush()
-            
+
             QgsLayerDefinition.loadLayerDefinition(
                 temp_file.name,
-                QgsProject.instance(), 
-                QgsProject.instance().layerTreeRoot()
-                )
-        
+                QgsProject.instance(),
+                QgsProject.instance().layerTreeRoot(),
+            )
+
         os.remove(temp_file.name)
         return True
-        
+
     @pyqtSlot(result=str)
     def getMapCanvasImage(self):
         """
@@ -60,9 +67,9 @@ class Backend(QObject):
         buffer.open(QIODevice.WriteOnly)
         image.save(buffer, "JPEG")
         base64_data = byte_array.toBase64().data().decode("utf-8")
-        
+
         return base64_data
-    
+
     @pyqtSlot(str, result=str)
     def getQgsSetting(self, key):
         """

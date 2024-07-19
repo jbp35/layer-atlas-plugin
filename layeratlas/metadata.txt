@@ -6,9 +6,9 @@
 name=Layer Atlas
 qgisMinimumVersion=3.36
 description=Discover and share geospatial layers easily within QGIS
-version=1.0
-author=Atelier JBP
-email=jbpeter@outlook.com
+version=1.0.0
+author=Layer Atlas
+email=contact@layeratlas.com
 
 about=Discover and share geospatial map layers effortlessly with the new Layer Atlas plugin for QGIS. This powerful tool enables fast and precise searches ensuring you find the layers you need quickly. Preview layers directly within QGIS to assess suitability, and conveniently add them to your your project with a simple drag-and-drop interface. Save frequently used layers to your favorites for easy access, streamlining your workflow and enhancing collaboration in geospatial projects.
 
@@ -25,9 +25,9 @@ hasProcessingProvider=no
 # Tags are comma separated with spaces allowed
 tags=basemap, atlas, collection, layer, map, service, internet, world
 
-homepage=https://www.layeratlase.com
+homepage=https://www.layeratlas.com
 category=Web
-icon=assets/icons/layer_atlas.png
+icon=resources/icons/layer_atlas.png
 # experimental flag
 experimental=False
 
@@ -38,9 +38,6 @@ deprecated=False
 # (or upgraded) can be specified.
 # Check the documentation for more information.
 # plugin_dependencies=
-
-Category of the plugin: Raster, Vector, Database or Web
-# category=
 
 # If the plugin can run on QGIS Server.
 server=False

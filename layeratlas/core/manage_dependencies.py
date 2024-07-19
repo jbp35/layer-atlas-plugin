@@ -1,10 +1,12 @@
-import pathlib
 import sys
 import os
 import subprocess
 import platform
 
 from qgis.PyQt.QtWidgets import QTextEdit, QMessageBox
+
+plugin_dir = os.path.dirname(os.path.dirname(__file__))
+
 
 def confirm_install() -> bool:
     """
@@ -32,30 +34,14 @@ def confirm_install() -> bool:
     return False
 
 
-def install_dependencies(plugin_dir):
+def install_dependencies():
     """
     Installs the required dependencies for a plugin.
 
-    Parameters:
-    - plugin_dir (str): The directory path of the plugin for which dependencies are to be installed.
     """
-    operating_system = platform.system()
-    try:
-        import pip
-    except ImportError:
-        exec(open(str(pathlib.Path(plugin_dir, "scripts", "get-pip.py"))).read())
-        import pip
+    import pip
 
-        if operating_system == "Darwin":
-            pip.main(["install", "--upgrade", "pip"])
-        elif operating_system == "Linux":
-            subprocess.check_call(
-                [sys.executable, "-m", "pip", "install", "upgrade", "pip"]
-            )
-        elif operating_system == "Windows":
-            subprocess.check_call(
-                ["python3", "-m", "pip", "install", "--upgrade", "pip"]
-            )
+    operating_system = platform.system()
     sys.path.append(plugin_dir)
 
     with open(os.path.join(plugin_dir, "requirements.txt"), "r") as requirements:
@@ -72,8 +58,8 @@ def install_dependencies(plugin_dir):
                     subprocess.check_call([sys.executable, "-m", "pip", "install", dep])
                 elif operating_system == "Windows":
                     subprocess.check_call(["python3", "-m", "pip", "install", dep])
-     
-     
+
+
 def restart_qgis(iface):
     """
     Prompts the user with a message to restart QGIS for changes to take effect.
@@ -81,11 +67,9 @@ def restart_qgis(iface):
     Args:
         iface: A QGIS interface instance that provides access to QGIS GUI elements.
     """
-    
-    message = (
-        "For the changes to take effect, you need to restart QGIS."
-    )
-    message += "\n\nWould you like to restart now?"
+
+    message = "For the changes to take effect, you need to restart QGIS."
+    message += "\n\nWould you like to close QGIS now?"
 
     reply = QMessageBox.question(
         None,
@@ -96,23 +80,22 @@ def restart_qgis(iface):
     )
 
     if reply == QMessageBox.Yes:
-        iface.actionExit().trigger()               
-                    
-def get_html_page(plugin_dir):
+        iface.actionExit().trigger()
+
+
+def get_html_page():
     """
     Loads an HTML page from a specified plugin directory and displays it in a read-only QTextEdit widget.
-
-    Args:
-        plugin_dir (str): The directory path of the plugin from which the HTML page will be loaded.
 
     Returns:
         QTextEdit: A QTextEdit widget displaying the HTML content in read-only mode.
     """
     readme_viewer = QTextEdit()
     readme_viewer.setReadOnly(True)
-    readme_path = os.path.join(plugin_dir,"src", "templates", "missing_QWebEngineView.html")
+    readme_path = os.path.join(
+        plugin_dir, "resources", "templates", "missing_pyqtwebengine.html"
+    )
     with open(readme_path, "r", encoding="utf-8") as file:
         readme_viewer.setHtml(file.read())
 
     return readme_viewer
-

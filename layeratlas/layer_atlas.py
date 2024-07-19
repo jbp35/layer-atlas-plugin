@@ -8,8 +8,8 @@
                               -------------------
         begin                : 2024-07-04
         git sha              : $Format:%H$
-        copyright            : (C) 2024 by Atelier JBP
-        email                : jbpeter@outlook.com
+        copyright            : (C) 2024 by Layer Atlas
+        email                : contact@layeratlas.com
  ***************************************************************************/
 
 /***************************************************************************
@@ -21,17 +21,14 @@
  *                                                                         *
  ***************************************************************************/
 """
+import os.path
+
 from qgis.PyQt.QtCore import QSettings, QTranslator, QCoreApplication, Qt
 from qgis.PyQt.QtGui import QIcon, QKeySequence
 from qgis.PyQt.QtWidgets import QAction
 
-
-# Initialize Qt resources from file resources.py
-from .resources import *
-
-# Import the code for the DockWidget
-from .Layer_Atlas_dockwidget import LayerAtlasDockWidget
-import os.path
+from layeratlas.resources.resources import *
+from layeratlas.gui.layer_atlas_dockwidget import LayerAtlasDockWidget
 
 
 class LayerAtlas:
@@ -45,10 +42,7 @@ class LayerAtlas:
             application at run time.
         :type iface: QgsInterface
         """
-        # Save reference to the QGIS interface
         self.iface = iface
-
-        # initialize plugin directory
         self.plugin_dir = os.path.dirname(__file__)
 
         # initialize locale
@@ -66,16 +60,12 @@ class LayerAtlas:
         self.actions = []
         self.menu = self.tr("&Layer Atlas")
 
-        # TODO: We are going to let the user set this up in a future iteration
         self.toolbar = self.iface.addToolBar("LayerAtlas")
         self.toolbar.setObjectName("Layer Atlas")
-
-        # print "** INITIALIZING LayerAtlas"
 
         self.pluginIsActive = False
         self.dockwidget = None
 
-    # noinspection PyMethodMayBeStatic
     def tr(self, message):
         """Get the translation for a string using Qt translation API.
 
@@ -168,7 +158,7 @@ class LayerAtlas:
     def initGui(self):
         """Create the menu entries and toolbar icons inside the QGIS GUI."""
 
-        icon_path = ":/assets/icons/layer_atlas.png"
+        icon_path = ":/icons/layer_atlas.png"
         self.add_action(
             icon_path,
             text=self.tr("Layer Atlas (Tab)"),

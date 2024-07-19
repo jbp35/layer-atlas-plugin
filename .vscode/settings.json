@@ -1,0 +1,19 @@
+{
+    "python.autoComplete.extraPaths": ["C:\\OSGeo4W\\apps\\qgis\\python"],
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true
+    },
+    // Change the color of the title bar for each project
+    "workbench.colorCustomizations": {
+        "titleBar.activeBackground": "#092810"
+    },
+    "python.analysis.extraPaths": [
+        "C:\\OSGeo4W\\apps\\qgis\\python"
+    ],
+    "cSpell.words": [
+        "dockwidget",
+        "layeratlas",
+        "qgis"
+    ],
+}

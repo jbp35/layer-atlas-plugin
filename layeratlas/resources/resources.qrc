@@ -1,0 +1,6 @@
+<RCC>
+    <qresource>
+        <file>icons/layer_atlas.png</file>
+        <file>icons/upload_sign.svg</file>
+    </qresource>
+</RCC>

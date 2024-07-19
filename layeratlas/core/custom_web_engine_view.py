@@ -1,17 +1,18 @@
 import os
 
-try:        
+try:
     from qgis.PyQt.QtWebEngineWidgets import QWebEngineView, QWebEngineSettings
 except ImportError:
     # Fallback for QGIS < 3.38
-    from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEngineSettings     
+    from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEngineSettings
 
 from PyQt5.QtWebChannel import QWebChannel
 
-from qgis.PyQt.QtCore import  Qt
+from qgis.PyQt.QtCore import Qt
 from qgis.core import QgsLayerDefinition
 
-from .backend import Backend
+from layeratlas.core.communication_bus import CommunicationBus
+
 
 class CustomWebEngineView(QWebEngineView):
     def __init__(self, _iface, *args, **kwargs):
@@ -19,7 +20,7 @@ class CustomWebEngineView(QWebEngineView):
         self.iface = _iface
         self.setAcceptDrops(True)
         self.setContextMenuPolicy(Qt.NoContextMenu)
-        
+
         settings = self.settings()
         settings.setAttribute(QWebEngineSettings.JavascriptEnabled, True)
         settings.setAttribute(QWebEngineSettings.LocalStorageEnabled, True)
@@ -27,10 +28,10 @@ class CustomWebEngineView(QWebEngineView):
         settings.setAttribute(QWebEngineSettings.WebGLEnabled, True)
 
         # Configure QWebChannel
-        self.backend = Backend()
+        self.communication_bus = CommunicationBus()
         self.channel = QWebChannel()
         self.page().setWebChannel(self.channel)
-        self.channel.registerObject("backend", self.backend)
+        self.channel.registerObject("communicationBus", self.communication_bus)
 
     def dragEnterEvent(self, event):
         event.accept()
@@ -41,7 +42,7 @@ class CustomWebEngineView(QWebEngineView):
             "application/qgis.layertree.layerdefinitions"
         )
         xml_data = layer_definition.data().decode("utf-8")
-        self.backend.EmitCreateLayer.emit(xml_data)
+        self.communication_bus.EmitCreateLayer.emit(xml_data)
 
         event.ignore()
 
@@ -52,6 +53,5 @@ class CustomWebEngineView(QWebEngineView):
         QgsLayerDefinition.exportLayerDefinition(temp_file_path, [selectedNodes[0]])
         with open(temp_file_path, "r") as file:
             layer_definition_xml = file.read()
-            self.backend.EmitCreateLayer.emit(layer_definition_xml)
+            self.communication_bus.EmitCreateLayer.emit(layer_definition_xml)
         os.remove(temp_file_path)
-

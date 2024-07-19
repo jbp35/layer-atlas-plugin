@@ -8,8 +8,8 @@
                              -------------------
         begin                : 2024-07-04
         git sha              : $Format:%H$
-        copyright            : (C) 2024 by Atelier JBP
-        email                : jbpeter@outlook.com
+        copyright            : (C) 2024 by Layer Atlas
+        email                : contact@layeratlas.com
  ***************************************************************************/
 
 /***************************************************************************
@@ -22,22 +22,16 @@
  ***************************************************************************/
 """
 
-import os
-
-from qgis.gui import QgsDockWidget, QgisInterface
-from qgis.PyQt import uic, QtWidgets
-from qgis.PyQt.QtGui import QIcon
-
-from qgis.PyQt.QtCore import QUrl, Qt, pyqtSignal
 from qgis.core import QgsMapLayerType
+from qgis.gui import QgsDockWidget, QgisInterface
+from qgis.PyQt import QtWidgets
+from qgis.PyQt.QtGui import QIcon
+from qgis.PyQt.QtCore import QUrl, Qt, pyqtSignal
 
-FORM_CLASS, _ = uic.loadUiType(
-    os.path.join(os.path.dirname(__file__), "Layer_Atlas_dockwidget_base.ui")
-)
 
-class LayerAtlasDockWidget(QgsDockWidget, FORM_CLASS):
+class LayerAtlasDockWidget(QgsDockWidget):
     closingPlugin = pyqtSignal()
-    
+
     def __init__(self, _iface: QgisInterface = None):
         """Constructor."""
         super().__init__()
@@ -45,41 +39,42 @@ class LayerAtlasDockWidget(QgsDockWidget, FORM_CLASS):
         self.setObjectName("LayerAtlasPlugin")
         self.setWindowTitle(self.tr("Layer Atlas"))
         self.setAllowedAreas(Qt.LeftDockWidgetArea | Qt.RightDockWidgetArea)
-        
-        self.plugin_dir = os.path.dirname(os.path.realpath(__file__))
+
         self.contextMenuActions = []
         self.dev_mode = False
-        
+
         try:
-            from .src.custom_web_engine_view import CustomWebEngineView
+            from layeratlas.core.custom_web_engine_view import CustomWebEngineView
+
             self.view = CustomWebEngineView(self.iface)
-            # url = QUrl("http://localhost:9000/?qgis=true")
             url = QUrl("https://www.layeratlas.com/?qgis=true")
             self.view.setUrl(url)
             self.setWidget(self.view)
             self.add_actions_layer_tree()
 
-            
         except ImportError:
             # if PyqtWebEngine not available, try to install it
-            from .src.manage_dependencies import confirm_install
+            from layeratlas.core.manage_dependencies import confirm_install
+
             if confirm_install():
                 self.install_dependencies()
             else:
                 # Show a message if user doesn't want to install
-                from .src.manage_dependencies import get_html_page
+                from layeratlas.core.manage_dependencies import get_html_page
+
                 self.container = QtWidgets.QWidget()
-                self.setWidget(self.container) 
+                self.setWidget(self.container)
                 self.layout = QtWidgets.QVBoxLayout(self.container)
 
-                self.view = get_html_page(self.plugin_dir)
+                self.view = get_html_page()
                 self.layout.addWidget(self.view)
 
                 # Create a button for installing dependencies
-                self.install_deps_button = QtWidgets.QPushButton("Install Dependencies", self)
+                self.install_deps_button = QtWidgets.QPushButton(
+                    "Install Dependencies", self
+                )
                 self.install_deps_button.clicked.connect(self.install_dependencies)
                 self.layout.addWidget(self.install_deps_button)
-
 
     def add_actions_layer_tree(self):
         """Add custom actions to the layer tree context menu for uploading layers to Layer Atlas."""
@@ -89,14 +84,13 @@ class LayerAtlasDockWidget(QgsDockWidget, FORM_CLASS):
             uploadAction.triggered.connect(self.view.add_layer_to_layer_atlas)
             self.iface.addCustomActionForLayerType(uploadAction, None, layer_type, True)
             self.contextMenuActions.append(uploadAction)
-            
+
     def remove_actions_layer_tree(self):
         """Removes custom actions from the layer tree context menu."""
         for uploadAction in self.contextMenuActions:
             self.iface.removeCustomActionForLayerType(uploadAction)
         self.contextMenuActions = []
-        
-    
+
     def keyPressEvent(self, event):
         """Handle key press events for debugging and reloading the plugin."""
 
@@ -109,14 +103,14 @@ class LayerAtlasDockWidget(QgsDockWidget, FORM_CLASS):
             self.view.setUrl(url)
             self.dev_mode = not self.dev_mode
 
-
         if event.key() == Qt.Key_F5 and event.modifiers() == Qt.ControlModifier:
             # Reload the page
             self.view.reload()
-            
+
         if event.key() == Qt.Key_F10 and event.modifiers() == Qt.ControlModifier:
             # Open the dev tools
-            from .src.custom_web_engine_view import CustomWebEngineView
+            from layeratlas.core.custom_web_engine_view import CustomWebEngineView
+
             self.debug_window = QtWidgets.QDialog()
             self.dev_view = CustomWebEngineView(self.iface)
             debug_layout = QtWidgets.QHBoxLayout()
@@ -125,18 +119,16 @@ class LayerAtlasDockWidget(QgsDockWidget, FORM_CLASS):
             self.debug_window.setLayout(debug_layout)
             self.view.page().setDevToolsPage(self.dev_view.page())
             self.debug_window.show()
-    
 
     def cleanup_on_close(self):
         """Cleanup the plugin on close."""
         self.remove_actions_layer_tree()
 
-
     def install_dependencies(self):
-        from .src.manage_dependencies import install_dependencies, restart_qgis
-        install_dependencies(self.plugin_dir)
+        from layeratlas.core.manage_dependencies import (
+            install_dependencies,
+            restart_qgis,
+        )
+
+        install_dependencies()
         restart_qgis(self.iface)
-
-
-
-
