@@ -80,7 +80,7 @@ class LayerAtlasDockWidget(QgsDockWidget):
         """Add custom actions to the layer tree context menu for uploading layers to Layer Atlas."""
         for layer_type in QgsMapLayerType:
             uploadAction = QtWidgets.QAction("Add to Layer Atlas")
-            uploadAction.setIcon(QIcon(":/assets/icons/upload_sign.svg"))
+            uploadAction.setIcon(QIcon(":icons/upload_sign.svg"))
             uploadAction.triggered.connect(self.view.add_layer_to_layer_atlas)
             self.iface.addCustomActionForLayerType(uploadAction, None, layer_type, True)
             self.contextMenuActions.append(uploadAction)
