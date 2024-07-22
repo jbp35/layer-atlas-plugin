@@ -8,30 +8,27 @@ from qgis.PyQt.QtWidgets import QTextEdit, QMessageBox
 plugin_dir = os.path.dirname(os.path.dirname(__file__))
 
 
-def confirm_install() -> bool:
+def confirm_install(iface) -> bool:
     """
     Prompts the user with a message to install the 'PyQtWebEngine' package if not already installed.
 
-    Returns:
-        bool: True if the user selects 'Yes', indicating they want to install the package. False otherwise.
     """
-
-    message = (
-        "To use Layer Atlas plugin, 'PyQtWebEngine' Python package must be installed."
+    mbox = QMessageBox()
+    mbox.setIcon(QMessageBox.Icon.Information)
+    mbox.setText(
+        "To use Layer Atlas plugin, 'PyQtWebEngine' Python package must be installed.\n\nWould you like to install it now?"
     )
-    message += "\n\nWould you like to install it now?"
+    mbox.setWindowTitle("Missing Dependencies")
+    mbox.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+    mbox.setDefaultButton(QMessageBox.Yes)
 
-    reply = QMessageBox.question(
-        None,
-        "Missing Dependencies",
-        message,
-        QMessageBox.Yes | QMessageBox.No,
-        QMessageBox.Yes,
-    )
+    def button_clicked():
+        print(mbox.clickedButton().text())
+        if mbox.clickedButton().text() == "&Yes":
+            install_dependencies()
+            restart_qgis(iface)
 
-    if reply == QMessageBox.Yes:
-        return True
-    return False
+    mbox.open(button_clicked)
 
 
 def install_dependencies():

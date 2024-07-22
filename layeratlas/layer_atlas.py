@@ -168,6 +168,7 @@ class LayerAtlas:
 
         # will be set False in run()
         self.first_start = True
+        self.run()
 
     def unload(self):
         """Removes the plugin menu item and icon from QGIS GUI."""

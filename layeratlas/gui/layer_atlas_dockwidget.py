@@ -56,25 +56,26 @@ class LayerAtlasDockWidget(QgsDockWidget):
             # if PyqtWebEngine not available, try to install it
             from layeratlas.core.manage_dependencies import confirm_install
 
-            if confirm_install():
-                self.install_dependencies()
-            else:
-                # Show a message if user doesn't want to install
-                from layeratlas.core.manage_dependencies import get_html_page
+            confirm_install(self.iface)
 
-                self.container = QtWidgets.QWidget()
-                self.setWidget(self.container)
-                self.layout = QtWidgets.QVBoxLayout(self.container)
+            # Show a message if user doesn't want to install
+            from layeratlas.core.manage_dependencies import get_html_page
 
-                self.view = get_html_page()
-                self.layout.addWidget(self.view)
+            self.container = QtWidgets.QWidget()
+            self.setWidget(self.container)
+            self.layout = QtWidgets.QVBoxLayout(self.container)
 
-                # Create a button for installing dependencies
-                self.install_deps_button = QtWidgets.QPushButton(
-                    "Install Dependencies", self
-                )
-                self.install_deps_button.clicked.connect(self.install_dependencies)
-                self.layout.addWidget(self.install_deps_button)
+            self.view = get_html_page()
+            self.layout.addWidget(self.view)
+
+            # Create a button for installing dependencies
+            self.install_deps_button = QtWidgets.QPushButton(
+                "Install Dependencies", self
+            )
+            self.install_deps_button.clicked.connect(
+                lambda: confirm_install(self.iface)
+            )
+            self.layout.addWidget(self.install_deps_button)
 
     def add_actions_layer_tree(self):
         """Add custom actions to the layer tree context menu for uploading layers to Layer Atlas."""
@@ -128,12 +129,3 @@ class LayerAtlasDockWidget(QgsDockWidget):
     def cleanup_on_close(self):
         """Cleanup the plugin on close."""
         self.remove_actions_layer_tree()
-
-    def install_dependencies(self):
-        from layeratlas.core.manage_dependencies import (
-            install_dependencies,
-            restart_qgis,
-        )
-
-        install_dependencies()
-        restart_qgis(self.iface)
