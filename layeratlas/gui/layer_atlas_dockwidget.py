@@ -104,8 +104,10 @@ class LayerAtlasDockWidget(QgsDockWidget):
             # toogle url dev / prod
             if self.dev_mode:
                 url = QUrl("https://www.layeratlas.com/?qgis=true")
+                self.setWindowTitle(self.tr("Layer Atlas"))
             else:
                 url = QUrl("http://localhost:9000/?qgis=true")
+                self.setWindowTitle(self.tr("Layer Atlas (Dev Mode)"))
             self.view.setUrl(url)
             self.dev_mode = not self.dev_mode
 
