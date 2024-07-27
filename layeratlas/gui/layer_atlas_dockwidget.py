@@ -43,11 +43,14 @@ class LayerAtlasDockWidget(QgsDockWidget):
         self.contextMenuActions = []
         self.dev_mode = False
 
+        self.set_web_view("https://www.layeratlas.com/?qgis=true")
+
+    def set_web_view(self, url):
         try:
             from layeratlas.core.custom_web_engine_view import CustomWebEngineView
 
             self.view = CustomWebEngineView(self.iface)
-            url = QUrl("https://www.layeratlas.com/?qgis=true")
+            url = QUrl(url)
             self.view.setUrl(url)
             self.setWidget(self.view)
             self.add_actions_layer_tree()
@@ -103,12 +106,12 @@ class LayerAtlasDockWidget(QgsDockWidget):
         if event.key() == Qt.Key_F1 and event.modifiers() == Qt.ControlModifier:
             # toogle url dev / prod
             if self.dev_mode:
-                url = QUrl("https://www.layeratlas.com/?qgis=true")
+                self.set_web_view("https://www.layeratlas.com/?qgis=true")
                 self.setWindowTitle(self.tr("Layer Atlas"))
             else:
-                url = QUrl("http://localhost:9000/?qgis=true")
+                self.set_web_view("http://localhost:9000/?qgis=true")
                 self.setWindowTitle(self.tr("Layer Atlas (Dev Mode)"))
-            self.view.setUrl(url)
+            self.show()
             self.dev_mode = not self.dev_mode
 
         if event.key() == Qt.Key_F5 and event.modifiers() == Qt.ControlModifier:
