@@ -25,7 +25,7 @@ hasProcessingProvider=no
 # Tags are comma separated with spaces allowed
 tags=basemap, atlas, collection, layer, map, service, internet, world
 
-homepage=https://www.layeratlas.com
+homepage=https://github.com/jbp35/layer-atlas-plugin
 category=Web
 icon=resources/icons/layer_atlas.png
 # experimental flag
