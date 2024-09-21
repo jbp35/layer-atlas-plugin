@@ -5,6 +5,7 @@ from qgis.core import (
     QgsProviderRegistry,
     QgsCoordinateTransformContext,
     QgsWkbTypes,
+    QgsVectorLayer,
 )
 
 from layeratlas.helper.logging_helper import log
@@ -53,7 +54,7 @@ def loadFile(dest_path: str, file_name: str) -> bool:
         return True
 
     except Exception as e:
-        log(f"Failed to load file: {dest_path} - {e}", "ERROR")
+        log(f"Failed to load file: {dest_path} - {e}", "CRITICAL")
         return False
 
 
@@ -64,13 +65,16 @@ def order_layers_by_geometry_type(layers):
     others = []
 
     for layer in layers:
-        if layer.geometryType() == QgsWkbTypes.PolygonGeometry:
-            polygons.append(layer)
-        elif layer.geometryType() == QgsWkbTypes.LineGeometry:
-            lines.append(layer)
-        elif layer.geometryType() == QgsWkbTypes.PointGeometry:
-            points.append(layer)
+        if isinstance(layer, QgsVectorLayer):
+            if layer.geometryType() == QgsWkbTypes.PolygonGeometry:
+                polygons.append(layer)
+            elif layer.geometryType() == QgsWkbTypes.LineGeometry:
+                lines.append(layer)
+            elif layer.geometryType() == QgsWkbTypes.PointGeometry:
+                points.append(layer)
+            else:
+                others.append(layer)
         else:
             others.append(layer)
 
-    return others + points + lines + polygons
+    return points + lines + polygons + others
