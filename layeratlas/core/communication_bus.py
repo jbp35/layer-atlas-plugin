@@ -2,7 +2,7 @@ import os
 import json
 import tempfile
 
-from qgis.core import QgsProject, QgsLayerDefinition, QgsSettings
+from qgis.core import QgsApplication, QgsProject, QgsLayerDefinition, QgsSettings
 from qgis.utils import iface
 from qgis.PyQt.QtCore import (
     QObject,
@@ -14,11 +14,18 @@ from qgis.PyQt.QtCore import (
 )
 from qgis.PyQt.QtGui import QImage, QPainter
 
+from layeratlas.core.download_file_task import DownloadFileTask
+from layeratlas.helper.logging_helper import log
+
 
 class CommunicationBus(QObject):
     """
     Handle communication with the QwebEngineView.
     """
+
+    def __init__(self):
+        super().__init__()
+        self.plugin_version = None
 
     # Signal to create a layer
     EmitCreateLayer = pyqtSignal(str)
@@ -45,6 +52,28 @@ class CommunicationBus(QObject):
             )
 
         os.remove(temp_file.name)
+        return True
+
+    @pyqtSlot(str, str, str, str, result=bool)
+    def downloadFileTask(self, url, dest_folder, headers=None, params=None):
+        """
+        Initiates a download task for a file from a given URL.
+
+        Args:
+            url (str): The URL of the file to be downloaded.
+            dest_folder (str): The destination folder where the file will be saved.
+            headers (str): JSON string of headers to include in the request.
+            params (str): JSON string of parameters to include in the request.
+
+        Returns:
+            bool: True if the task was successfully added to the task manager.
+        """
+        headers = json.loads(headers)
+        params = json.loads(params)
+
+        self.task = DownloadFileTask(url, dest_folder, headers=headers, params=params)
+        QgsApplication.taskManager().addTask(self.task)
+
         return True
 
     @pyqtSlot(result=str)
@@ -84,3 +113,24 @@ class CommunicationBus(QObject):
         settings = QgsSettings()
         value = json.dumps(settings.value(key))
         return value
+
+    @pyqtSlot(result=str)
+    def getPluginVersion(self):
+        """
+        Retrieves the version of the plugin from the metadata.txt file.
+
+        Returns:
+            str: The version of the plugin.
+        """
+        if self.plugin_version is not None:
+            return self.plugin_version
+
+        current_dir = os.path.dirname(os.path.dirname(__file__))
+        metadata_path = os.path.join(current_dir, "metadata.txt")
+
+        with open(metadata_path, "r") as file:
+            for line in file:
+                if line.startswith("version="):
+                    version = line.split("=")[1].strip()
+                    return version
+        return None

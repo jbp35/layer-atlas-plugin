@@ -6,7 +6,7 @@
 name=Layer Atlas
 qgisMinimumVersion=3.36
 description=Discover and share geospatial layers easily within QGIS
-version=1.0.0
+version=1.1.0
 author=Layer Atlas
 email=contact@layeratlas.com
 
@@ -20,7 +20,9 @@ repository=https://github.com/jbp35/layer-atlas-plugin
 
 hasProcessingProvider=no
 # Uncomment the following line and add your changelog:
-# changelog=
+changelog=
+    Version 1.1.0
+        - Added support to create, download and load datasets from URL
 
 # Tags are comma separated with spaces allowed
 tags=basemap, atlas, collection, layer, map, service, internet, world

@@ -13,6 +13,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [1.1.0]
+
+### Added
+
+- Added support to create, download and load datasets from URL
+
+
 ## [1.0.0] - 2023-03-05
 
 ### Added
