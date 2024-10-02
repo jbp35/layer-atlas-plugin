@@ -5,12 +5,9 @@ from requests.adapters import HTTPAdapter
 from urllib3.util import Retry
 from urllib.parse import urlparse
 
-from qgis.core import QgsProject, QgsTask
-from qgis.PyQt.QtWidgets import QFileDialog
+from qgis.core import QgsTask
 
 from layeratlas.helper.logging_helper import log
-from layeratlas.core.load_file import loadFile
-
 
 # Define the retry strategy
 retry_strategy = Retry(
@@ -27,39 +24,26 @@ session.mount("https://", adapter)
 
 
 class DownloadFileTask(QgsTask):
-    def __init__(self, url, dest_folder, chunk_size=1024, headers=None, params=None):
+    def __init__(self, request, dest_folder, chunk_size=1024):
         super().__init__("Download File:", QgsTask.CanCancel)
-        self.url = url
+        self.file_name = None
         self.dest_folder = dest_folder
         self.dest_path = ""
+
+        self.request = request
+
         self.chunk_size = chunk_size
         self.total_size = 0
         self.downloaded_size = 0
-        self.file_name = None
-        self.headers = headers
-        self.params = params
+        self.timeout = request.get("timeout", 10)
 
+    def run(self):
         # Try to parse response header
         self.parse_response_header()
 
         # If could not get filename from header, use the last part of the URL
         if not self.file_name:
-            self.file_name = os.path.basename(urlparse(self.url).path)
-
-        # Replace homePath variable with the actual home path
-        if self.dest_folder.startswith("$homePath"):
-            project = QgsProject.instance()
-            home_path = project.homePath()
-            if home_path:
-                self.dest_folder = dest_folder.replace("$homePath", home_path)
-            else:
-                self.dest_folder = ""
-
-        # If the destination folder is not specified, ask the user to select one
-        if self.dest_folder == "":
-            self.dest_folder = QFileDialog.getExistingDirectory(
-                None, "Select File Download Folder ", "", QFileDialog.ShowDirsOnly
-            )
+            self.file_name = os.path.basename(urlparse(self.request["url"]).path)
 
         # Normalize the destination path
         self.dest_path = os.path.normpath(
@@ -67,17 +51,6 @@ class DownloadFileTask(QgsTask):
         ).replace("\\", "/")
 
         self.setDescription(f"Downloading File: {self.file_name}")
-
-    def run(self):
-
-        # Check if path is specified
-        if not self.dest_folder:
-            log("No download folder specified - cancelling download task", "WARNING")
-            return False
-
-        # Ensure the destination folder exists
-        if not os.path.exists(self.dest_folder):
-            os.makedirs(self.dest_folder)
 
         # Check if the file already exists
         if os.path.exists(self.dest_path):
@@ -87,7 +60,11 @@ class DownloadFileTask(QgsTask):
         # Download the file
         try:
             response = session.get(
-                self.url, stream=True, headers=self.headers, params=self.params
+                self.request["url"],
+                stream=True,
+                headers=self.request["headers"],
+                params=self.request["params"],
+                timeout=self.timeout,
             )
             response.raise_for_status()
 
@@ -117,7 +94,6 @@ class DownloadFileTask(QgsTask):
     def finished(self, result):
         if result:
             log("Download completed successfully", "SUCCESS")
-            loadFile(self.dest_path, self.file_name)
         else:
             if os.path.exists(self.dest_path):
                 log("Removing temporary files", "INFO")
@@ -133,7 +109,11 @@ class DownloadFileTask(QgsTask):
         """
         try:
             response = session.head(
-                self.url, allow_redirects=True, headers=self.headers, params=self.params
+                self.request["url"],
+                allow_redirects=True,
+                headers=self.request["headers"],
+                params=self.request["params"],
+                timeout=self.timeout,
             )
             content_disposition = response.headers.get("content-disposition")
             self.total_size = int(response.headers.get("content-length", 0))

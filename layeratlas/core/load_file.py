@@ -27,11 +27,11 @@ def loadFile(dest_path: str, file_name: str) -> bool:
         QgsProviderSublayerDetails = provider.querySublayers(dest_path)
 
         transform_context = QgsCoordinateTransformContext()
+        file_name_trimmed = os.path.splitext(file_name)[0]
 
         # If multiple sublayers are found, add them to a group
         group = None
         if len(QgsProviderSublayerDetails) > 1:
-            file_name_trimmed = os.path.splitext(file_name)[0]
             root = QgsProject.instance().layerTreeRoot()
             group = root.addGroup(file_name_trimmed)
 
@@ -39,6 +39,8 @@ def loadFile(dest_path: str, file_name: str) -> bool:
         for QgsProviderSublayerDetail in QgsProviderSublayerDetails:
             options = QgsProviderSublayerDetail.LayerOptions(transform_context)
             layer = QgsProviderSublayerDetail.toLayer(options)
+            if layer.name() == "Layer1":
+                layer.setName(file_name_trimmed)
             layers.append(layer)
 
         ordered_layers = order_layers_by_geometry_type(layers)
@@ -59,6 +61,15 @@ def loadFile(dest_path: str, file_name: str) -> bool:
 
 
 def order_layers_by_geometry_type(layers):
+    """
+    Orders layers by their geometry type.
+
+    Parameters:
+    layers: A list of layers to be ordered.
+
+    Returns:
+    A list of layers ordered by points, lines, polygons, and others.
+    """
     polygons = []
     lines = []
     points = []

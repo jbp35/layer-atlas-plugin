@@ -13,9 +13,12 @@ from qgis.PyQt.QtCore import (
     QIODevice,
 )
 from qgis.PyQt.QtGui import QImage, QPainter
+from qgis.PyQt.QtWidgets import QFileDialog, QDialog
 
 from layeratlas.core.download_file_task import DownloadFileTask
 from layeratlas.helper.logging_helper import log
+from layeratlas.core.load_file import loadFile
+from layeratlas.gui.select_dataset_layers import SelectDatasetLayersDialog
 
 
 class CommunicationBus(QObject):
@@ -54,25 +57,64 @@ class CommunicationBus(QObject):
         os.remove(temp_file.name)
         return True
 
-    @pyqtSlot(str, str, str, str, result=bool)
-    def downloadFileTask(self, url, dest_folder, headers=None, params=None):
+    @pyqtSlot(str, str, result=bool)
+    def downloadDataset(self, requests, dest_folder):
         """
-        Initiates a download task for a file from a given URL.
+        Initiates a download tasks for a list of requests
 
         Args:
-            url (str): The URL of the file to be downloaded.
+            requests (str): JSON string of requests to download.
             dest_folder (str): The destination folder where the file will be saved.
-            headers (str): JSON string of headers to include in the request.
-            params (str): JSON string of parameters to include in the request.
 
         Returns:
             bool: True if the task was successfully added to the task manager.
         """
-        headers = json.loads(headers)
-        params = json.loads(params)
+        try:
+            requests = json.loads(requests)
+        except json.JSONDecodeError as e:
+            log("Error decoding JSON string: {}".format(e), "ERROR")
+            return False
 
-        self.task = DownloadFileTask(url, dest_folder, headers=headers, params=params)
-        QgsApplication.taskManager().addTask(self.task)
+        # Replace homePath variable with the actual home path
+        if dest_folder.startswith("$homePath"):
+            project = QgsProject.instance()
+            home_path = project.homePath()
+            if home_path:
+                dest_folder = dest_folder.replace("$homePath", home_path)
+            else:
+                dest_folder = ""
+
+        # If the destination folder is not specified, ask the user to select one
+        if dest_folder == "":
+            dest_folder = QFileDialog.getExistingDirectory(
+                None, "Select File Download Folder ", "", QFileDialog.ShowDirsOnly
+            )
+
+        # Check if path is specified
+        if not dest_folder:
+            log("No download folder specified - cancelling download task", "WARNING")
+            return False
+
+        # Ensure the destination folder exists
+        if not os.path.exists(dest_folder):
+            os.makedirs(dest_folder)
+
+        # If multiple requests are provided, ask the user to select the ones to download
+        if len(requests) > 1:
+            dialog = SelectDatasetLayersDialog(requests)
+            if dialog.exec_() == QDialog.Accepted:
+                requests = dialog.selectedRequests()
+            else:
+                log("No requests selected - cancelling download task", "WARNING")
+                return False
+
+        # Create a download task for each request
+        self.tasks = [DownloadFileTask(request, dest_folder) for request in requests]
+        for task in self.tasks:
+            task.taskCompleted.connect(
+                lambda task=task: loadFile(task.dest_path, task.file_name)
+            )
+            QgsApplication.taskManager().addTask(task)
 
         return True
 
