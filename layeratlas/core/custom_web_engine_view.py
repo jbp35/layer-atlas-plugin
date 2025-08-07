@@ -3,10 +3,15 @@ import os
 try:
     from qgis.PyQt.QtWebEngineWidgets import QWebEngineView, QWebEngineSettings
 except ImportError:
-    # Fallback for QGIS < 3.38
-    from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEngineSettings
+    try:
+        from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEngineSettings
+    except ImportError:
+        from PyQt6.QtWebEngineWidgets import QWebEngineView, QWebEngineSettings
 
-from PyQt5.QtWebChannel import QWebChannel
+try:
+    from PyQt5.QtWebChannel import QWebChannel
+except ImportError:
+    from PyQt6.QtWebChannel import QWebChannel
 
 from qgis.PyQt.QtCore import Qt
 from qgis.core import QgsLayerDefinition
@@ -19,7 +24,7 @@ class CustomWebEngineView(QWebEngineView):
         super(CustomWebEngineView, self).__init__(*args, **kwargs)
         self.iface = _iface
         self.setAcceptDrops(True)
-        self.setContextMenuPolicy(Qt.NoContextMenu)
+        self.setContextMenuPolicy(Qt.NoContextMenu)  # Qt.ContextMenuPolicy. ?
 
         settings = self.settings()
         settings.setAttribute(QWebEngineSettings.JavascriptEnabled, True)

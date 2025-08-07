@@ -137,7 +137,7 @@ class LayerAtlas:
         action.setEnabled(enabled_flag)
 
         # Create a keyboard shortcut for the action
-        action.setShortcut(QKeySequence(Qt.Key_Tab))
+        action.setShortcut(QKeySequence(Qt.Key.Key_Tab))
 
         if status_tip is not None:
             action.setStatusTip(status_tip)
@@ -185,7 +185,7 @@ class LayerAtlas:
 
         if self.first_start == True:
             self.dockwidget = LayerAtlasDockWidget(self.iface)
-            self.iface.addDockWidget(Qt.RightDockWidgetArea, self.dockwidget)
+            self.iface.addDockWidget(Qt.DockWidgetArea.RightDockWidgetArea, self.dockwidget)
             self.first_start = False
         else:
             if self.dockwidget.isVisible() == True:

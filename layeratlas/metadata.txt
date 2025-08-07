@@ -6,7 +6,7 @@
 name=Layer Atlas
 qgisMinimumVersion=3.36
 description=Discover and share geospatial layers easily within QGIS
-version=1.1.0
+version=1.2.0
 author=Layer Atlas
 email=contact@layeratlas.com
 
@@ -21,6 +21,8 @@ repository=https://github.com/jbp35/layer-atlas-plugin
 hasProcessingProvider=no
 # Uncomment the following line and add your changelog:
 changelog=
+    Version 1.2.0
+        - Added QT6 support
     Version 1.1.0
         - Added support to create, download and load datasets from URL
 
@@ -32,6 +34,9 @@ category=Web
 icon=resources/icons/layer_atlas.png
 # experimental flag
 experimental=False
+
+# QT6 support
+supportsQt6=yes
 
 # deprecated flag (applies to the whole plugin, not just a single version)
 deprecated=False

@@ -15,23 +15,32 @@
   </head>
   <body>
     <h1>PyQtWebEngine Module Not Found</h1>
-    <p>
-      Layer Atlas requires the installation of extra dependencies.
-    </p>
+    <p>Layer Atlas requires the installation of extra dependencies.</p>
 
-    <h2>Manual Installation</h2>
+    <h2>Recommended Installation</h2>
+    <p>
+      The best way to install the required dependencies is through the OSGeo4W
+      Network Installer:
+    </p>
     <ol>
       <li>
-        <strong>Close QGIS</strong>: Ensure QGIS is completely closed before
-        proceeding.
+        <strong>Download OSGeo4W Network Installer</strong>: Visit
+        <a href="https://trac.osgeo.org/osgeo4w/" target="_blank"
+          >https://trac.osgeo.org/osgeo4w/</a
+        >
+        and download the network installer.
       </li>
       <li>
-        <strong>Open OSGEO4W Shell</strong>: Navigate to the Windows start menu,
-        search for <code>OSGEO4W Shell</code>, and open it.
+        <strong>Run the Installer</strong>: Execute the OSGeo4W Network
+        Installer and choose "Advanced Install".
       </li>
       <li>
-        <strong>Install PyQtWebEngine</strong>: In the OSGEO4W Shell, execute
-        the command: <code>python -m pip install PyQtWebEngine</code>
+        <strong>Select Packages</strong>: In the package selection screen,
+        search for and select <code>python3-pyqtwebengine</code> from the list.
+      </li>
+      <li>
+        <strong>Complete Installation</strong>: Follow the installer prompts to
+        complete the installation.
       </li>
       <li>
         <strong>Restart QGIS</strong>: Open QGIS again to complete the setup.
