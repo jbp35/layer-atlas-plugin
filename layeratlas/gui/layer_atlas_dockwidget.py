@@ -22,12 +22,12 @@
  ***************************************************************************/
 """
 
-from qgis.core import QgsMapLayerType
+from qgis.core import QgsMapLayerType, QgsMessageLog, Qgis
 from qgis.gui import QgsDockWidget, QgisInterface
 from qgis.PyQt import QtWidgets
 from qgis.PyQt.QtGui import QIcon
-from qgis.PyQt.QtCore import QUrl, Qt, pyqtSignal
-
+from qgis.PyQt.QtCore import Qt, pyqtSignal
+from layeratlas.communication.web_engine_view import WebEngineView
 
 class LayerAtlasDockWidget(QgsDockWidget):
     closingPlugin = pyqtSignal()
@@ -43,42 +43,44 @@ class LayerAtlasDockWidget(QgsDockWidget):
         self.contextMenuActions = []
         self.dev_mode = False
 
-        self.set_web_view("https://www.layeratlas.com/?qgis=true")
+        self.view = WebEngineView()
 
-    def set_web_view(self, url):
-        try:
-            from layeratlas.core.custom_web_engine_view import CustomWebEngineView
+        if self.view is None:
+            self.webengine_not_available()
+            return
+        
+        self.view.set_url("http://localhost:9000/?qgis=true")
+        # self.view.set_url("https://www.layeratlas.com/?qgis=true")
 
-            self.view = CustomWebEngineView(self.iface)
-            url = QUrl(url)
-            self.view.setUrl(url)
-            self.setWidget(self.view)
-            self.add_actions_layer_tree()
+        self.setWidget(self.view)
+        self.add_actions_layer_tree()
 
-        except ImportError:
-            # if PyqtWebEngine not available, try to install it
-            from layeratlas.core.manage_dependencies import confirm_install
 
-            confirm_install(self.iface)
+    def webengine_not_available(self):
+        """Handle the case where no WebEngine implementation is available."""
+        from layeratlas.core.manage_dependencies import confirm_install
 
-            # Show a message if user doesn't want to install
-            from layeratlas.core.manage_dependencies import get_html_page
+        confirm_install(self.iface)
 
-            self.container = QtWidgets.QWidget()
-            self.setWidget(self.container)
-            self.layout = QtWidgets.QVBoxLayout(self.container)
+        # Show a message if user doesn't want to install
+        from layeratlas.core.manage_dependencies import get_html_page
 
-            self.view = get_html_page()
-            self.layout.addWidget(self.view)
+        self.container = QtWidgets.QWidget()
+        self.setWidget(self.container)
+        self.layout = QtWidgets.QVBoxLayout(self.container)
 
-            # Create a button for installing dependencies
-            self.install_deps_button = QtWidgets.QPushButton(
-                "Install Dependencies", self
-            )
-            self.install_deps_button.clicked.connect(
-                lambda: confirm_install(self.iface)
-            )
-            self.layout.addWidget(self.install_deps_button)
+        self.view = get_html_page()
+        self.layout.addWidget(self.view)
+
+        # Create a button for installing dependencies
+        self.install_deps_button = QtWidgets.QPushButton(
+            "Install Dependencies", self
+        )
+        self.install_deps_button.clicked.connect(
+            lambda: confirm_install(self.iface)
+        )
+        self.layout.addWidget(self.install_deps_button)
+
 
     def add_actions_layer_tree(self):
         """Add custom actions to the layer tree context menu for uploading layers to Layer Atlas."""
@@ -103,7 +105,7 @@ class LayerAtlasDockWidget(QgsDockWidget):
     def keyPressEvent(self, event):
         """Handle key press events for debugging and reloading the plugin."""
 
-        if event.key() == Qt.Key_F1 and event.modifiers() == Qt.ControlModifier:
+        if event.key() == Qt.Key.Key_F1 and event.modifiers() == Qt.KeyboardModifier.ControlModifier:
             # toogle url dev / prod
             if self.dev_mode:
                 self.set_web_view("https://www.layeratlas.com/?qgis=true")
@@ -114,11 +116,11 @@ class LayerAtlasDockWidget(QgsDockWidget):
             self.show()
             self.dev_mode = not self.dev_mode
 
-        if event.key() == Qt.Key_F5 and event.modifiers() == Qt.ControlModifier:
+        if event.key() == Qt.Key.Key_F5 and event.modifiers() == Qt.KeyboardModifier.ControlModifier:
             # Reload the page
             self.view.reload()
 
-        if event.key() == Qt.Key_F10 and event.modifiers() == Qt.ControlModifier:
+        if event.key() == Qt.Key.Key_F10 and event.modifiers() == Qt.KeyboardModifier.ControlModifier:
             # Open the dev tools
             from layeratlas.core.custom_web_engine_view import CustomWebEngineView
 

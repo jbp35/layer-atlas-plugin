@@ -1,7 +1,11 @@
 {
-    "python.autoComplete.extraPaths": ["C:\\OSGeo4W\\apps\\qgis\\python"],
+    "python.autoComplete.extraPaths": [
+        "C:\\Qgis_local\\python",
+        "C:\\Qgis_local\\python\\qgis",
+        "C:\\Qgis_local\\python\\plugins"
+    ],
     "[python]": {
-        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.defaultFormatter": "ms-python.python",
         "editor.formatOnSave": true
     },
     // Change the color of the title bar for each project
@@ -9,8 +13,22 @@
         "titleBar.activeBackground": "#092810"
     },
     "python.analysis.extraPaths": [
-        "C:\\OSGeo4W\\apps\\qgis\\python"
+        "C:\\Qgis_local\\python",
+        "C:\\Qgis_local\\python\\qgis", 
+        "C:\\Qgis_local\\python\\plugins"
     ],
+    "python.defaultInterpreterPath": "C:\\Qgis_local\\bin\\python.exe",
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": false,
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.stubPath": "C:\\Qgis_local\\python",
+    "python.analysis.include": [
+        "layeratlas/**"
+    ],
+    "python.terminal.activateEnvironment": false,
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.diagnosticMode": "workspace",
     "cSpell.words": [
         "dockwidget",
         "layeratlas",

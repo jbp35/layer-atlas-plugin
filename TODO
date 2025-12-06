@@ -1,0 +1,4 @@
+Move drag and drop logic out of custom_web_engine_view
+Fix all the part with key press & debug view
+Move logic outside of layer_atlas_dockwidget
+Find a way in frontend to keep using window.qt.webChannelTransport for backward compatibility

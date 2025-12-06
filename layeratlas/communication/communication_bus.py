@@ -1,17 +1,12 @@
+from __future__ import annotations
+
 import os
 import json
 import tempfile
 
-from qgis.core import QgsApplication, QgsProject, QgsLayerDefinition, QgsSettings
+from qgis.core import QgsApplication, QgsProject, QgsLayerDefinition, QgsSettings, QgsMessageLog, Qgis
 from qgis.utils import iface
-from qgis.PyQt.QtCore import (
-    QObject,
-    pyqtSlot,
-    pyqtSignal,
-    QByteArray,
-    QBuffer,
-    QIODevice,
-)
+from qgis.PyQt.QtCore import QObject, pyqtSignal, pyqtSlot,QByteArray, QBuffer, QIODevice
 from qgis.PyQt.QtGui import QImage, QPainter
 from qgis.PyQt.QtWidgets import QFileDialog, QDialog
 
@@ -21,7 +16,7 @@ from layeratlas.core.load_file import loadFile
 from layeratlas.gui.select_dataset_layers import SelectDatasetLayersDialog
 
 
-class CommunicationBus(QObject):
+class communicationBus(QObject):
     """
     Handle communication with the QwebEngineView.
     """
@@ -44,6 +39,7 @@ class CommunicationBus(QObject):
         Returns:
             bool: True if the layer was successfully added.
         """
+        QgsMessageLog.logMessage("Add layer to project", "Layer Atlas", Qgis.Info)
         with tempfile.NamedTemporaryFile(suffix=".qlr", delete=False) as temp_file:
             temp_file.write(LayerDefinitionXML.encode("utf-8"))
             temp_file.flush()
