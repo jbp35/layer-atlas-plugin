@@ -21,19 +21,26 @@
  *                                                                         *
  ***************************************************************************/
 """
+import os
 
-from qgis.core import QgsMapLayerType, QgsMessageLog, Qgis
+from qgis.core import QgsMapLayerType, QgsLayerDefinition
 from qgis.gui import QgsDockWidget, QgisInterface
 from qgis.PyQt import QtWidgets
 from qgis.PyQt.QtGui import QIcon
-from qgis.PyQt.QtCore import Qt, pyqtSignal
+from qgis.PyQt.QtCore import Qt, pyqtSignal, QUrl
+
 from layeratlas.communication.web_engine_view import WebEngineView
+from layeratlas.gui.fallback_widget import FallbackWidget
+from layeratlas.helper.logging_helper import setup_logger
+
+logger = setup_logger(__name__)
 
 class LayerAtlasDockWidget(QgsDockWidget):
     closingPlugin = pyqtSignal()
 
-    def __init__(self, _iface: QgisInterface = None):
+    def __init__(self, _iface: QgisInterface):
         """Constructor."""
+        logger.info("Initializing LayerAtlasDockWidget")
         super().__init__()
         self.iface = _iface
         self.setObjectName("LayerAtlasPlugin")
@@ -43,96 +50,116 @@ class LayerAtlasDockWidget(QgsDockWidget):
         self.contextMenuActions = []
         self.dev_mode = False
 
-        self.view = WebEngineView()
+        logger.debug("Creating WebEngineView")
+        self.view = WebEngineView(self.iface)
 
         if self.view is None:
-            self.webengine_not_available()
+            logger.warning("WebEngineView creation failed, using fallback widget")
+            fallback_widget = FallbackWidget(self.iface, self)
+            self.setWidget(fallback_widget)
             return
         
-        self.view.set_url("http://localhost:9000/?qgis=true")
-        # self.view.set_url("https://www.layeratlas.com/?qgis=true")
+        logger.debug("Setting URL to Layer Atlas production site")
+        self.view.setUrl(QUrl("https://www.layeratlas.com/?qgis=true"))
 
         self.setWidget(self.view)
         self.add_actions_layer_tree()
-
-
-    def webengine_not_available(self):
-        """Handle the case where no WebEngine implementation is available."""
-        from layeratlas.core.manage_dependencies import confirm_install
-
-        confirm_install(self.iface)
-
-        # Show a message if user doesn't want to install
-        from layeratlas.core.manage_dependencies import get_html_page
-
-        self.container = QtWidgets.QWidget()
-        self.setWidget(self.container)
-        self.layout = QtWidgets.QVBoxLayout(self.container)
-
-        self.view = get_html_page()
-        self.layout.addWidget(self.view)
-
-        # Create a button for installing dependencies
-        self.install_deps_button = QtWidgets.QPushButton(
-            "Install Dependencies", self
-        )
-        self.install_deps_button.clicked.connect(
-            lambda: confirm_install(self.iface)
-        )
-        self.layout.addWidget(self.install_deps_button)
-
+        logger.info("LayerAtlasDockWidget initialization completed successfully")
 
     def add_actions_layer_tree(self):
         """Add custom actions to the layer tree context menu for uploading layers to Layer Atlas."""
+        logger.debug("Adding custom actions to layer tree context menu")
         for layer_type in QgsMapLayerType:
             uploadAction = QtWidgets.QAction("Add to Layer Atlas")
             uploadAction.setIcon(QIcon(":icons/upload_sign.svg"))
             uploadAction.triggered.connect(self.add_layer_to_layer_atlas)
             self.iface.addCustomActionForLayerType(uploadAction, None, layer_type, True)
             self.contextMenuActions.append(uploadAction)
+        logger.info(f"Successfully added {len(self.contextMenuActions)} context menu actions for layer types")
 
     def remove_actions_layer_tree(self):
         """Removes custom actions from the layer tree context menu."""
+        logger.debug(f"Removing {len(self.contextMenuActions)} custom actions from layer tree context menu")
         for uploadAction in self.contextMenuActions:
             self.iface.removeCustomActionForLayerType(uploadAction)
         self.contextMenuActions = []
+        logger.info("Successfully removed all context menu actions")
 
     def add_layer_to_layer_atlas(self):
+        logger.info("Starting layer upload to Layer Atlas")
         if self.isVisible() == False:
+            logger.debug("Showing LayerAtlasDockWidget window")
             self.show()
-        self.view.add_layer_to_layer_atlas()
+        
+        layerTreeView = self.iface.layerTreeView()
+        selectedNodes = layerTreeView.selectedNodes()
+        
+        if not selectedNodes:
+            logger.warning("No layers selected for upload")
+            return
+            
+        logger.debug(f"Selected {len(selectedNodes)} node(s) for upload")
+        temp_file_path = "temp.qlr"
+        
+        try:
+            logger.debug(f"Exporting layer definition to temporary file: {temp_file_path}")
+            QgsLayerDefinition.exportLayerDefinition(temp_file_path, [selectedNodes[0]])
+            
+            with open(temp_file_path, "r") as file:
+                layer_definition_xml = file.read()
+                logger.debug("Emitting CreateLayer signal with layer definition XML")
+                self.view.communication_bus.EmitCreateLayer.emit(layer_definition_xml)
+            
+            os.remove(temp_file_path)
+            logger.info("Successfully processed layer upload to Layer Atlas")
+            
+        except Exception as e:
+            logger.error(f"Failed to upload layer to Layer Atlas: {str(e)}")
+            if os.path.exists(temp_file_path):
+                os.remove(temp_file_path)
+                logger.debug("Cleaned up temporary file after error")
 
     def keyPressEvent(self, event):
         """Handle key press events for debugging and reloading the plugin."""
 
+        # Ctrl+F1 - Toggle URL dev / prod
         if event.key() == Qt.Key.Key_F1 and event.modifiers() == Qt.KeyboardModifier.ControlModifier:
-            # toogle url dev / prod
             if self.dev_mode:
-                self.set_web_view("https://www.layeratlas.com/?qgis=true")
+                logger.info("Switching from development mode to production mode")
+                self.view.setUrl(QUrl("https://www.layeratlas.com/?qgis=true"))
                 self.setWindowTitle(self.tr("Layer Atlas"))
             else:
-                self.set_web_view("http://localhost:9000/?qgis=true")
+                logger.info("Switching from production mode to development mode")
+                self.view.setUrl(QUrl("http://localhost:9000/?qgis=true"))
                 self.setWindowTitle(self.tr("Layer Atlas (Dev Mode)"))
-            self.show()
             self.dev_mode = not self.dev_mode
+            logger.debug(f"Dev mode is now: {self.dev_mode}")
 
+        # Ctrl+F5 - Reload the page
         if event.key() == Qt.Key.Key_F5 and event.modifiers() == Qt.KeyboardModifier.ControlModifier:
-            # Reload the page
+            logger.info("Reloading Layer Atlas web page")
             self.view.reload()
 
+        # Ctrl+F10 - Open the dev tools       
         if event.key() == Qt.Key.Key_F10 and event.modifiers() == Qt.KeyboardModifier.ControlModifier:
-            # Open the dev tools
-            from layeratlas.core.custom_web_engine_view import CustomWebEngineView
+            logger.info("Opening development tools")
+            try :
+                self.view.openDebugView()
+            except Exception as e:
+                # Fallbach if QgsWebEngineView not available
+                logger.info(f"Using fallback method to open dev tools: {str(e)}")
+                from layeratlas.communication.web_engine_view import WebEngineView
+                self.debug_window = QtWidgets.QDialog()
+                self.dev_view = WebEngineView(self.iface)
+                debug_layout = QtWidgets.QHBoxLayout()
+                debug_layout.setContentsMargins(0, 0, 0, 0)
+                debug_layout.addWidget(self.dev_view)
+                self.debug_window.setLayout(debug_layout)
+                self.view.page().setDevToolsPage(self.dev_view.page())
+                self.debug_window.show()
 
-            self.debug_window = QtWidgets.QDialog()
-            self.dev_view = CustomWebEngineView(self.iface)
-            debug_layout = QtWidgets.QHBoxLayout()
-            debug_layout.setContentsMargins(0, 0, 0, 0)
-            debug_layout.addWidget(self.dev_view)
-            self.debug_window.setLayout(debug_layout)
-            self.view.page().setDevToolsPage(self.dev_view.page())
-            self.debug_window.show()
 
     def cleanup_on_close(self):
         """Cleanup the plugin on close."""
         self.remove_actions_layer_tree()
+        logger.info("LayerAtlasDockWidget cleanup completed")

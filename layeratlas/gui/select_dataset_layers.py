@@ -15,25 +15,25 @@ class SelectDatasetLayersDialog(QDialog):
     def __init__(self, requests, parent=None):
         super().__init__(parent)
         self.setWindowTitle("Select Files to Download")
-        self.layout = QVBoxLayout(self)
+        self.dialog_layout = QVBoxLayout(self)
         self.resize(400, 300)
 
         # Search box
         self.searchBox = QLineEdit(self)
         self.searchBox.setPlaceholderText("Search...")
         self.searchBox.textChanged.connect(self.filterList)
-        self.layout.addWidget(self.searchBox)
+        self.dialog_layout.addWidget(self.searchBox)
 
         self.listWidget = QListWidget(self)
 
         for request in requests:
             listItem = QListWidgetItem(request["name"])
-            listItem.setCheckState(Qt.Checked)
-            listItem.setData(Qt.UserRole, request)
+            listItem.setCheckState(Qt.CheckState.Checked)
+            listItem.setData(Qt.ItemDataRole.UserRole, request)
             listItem.setToolTip(request.get("url", ""))
             self.listWidget.addItem(listItem)
 
-        self.layout.addWidget(self.listWidget)
+        self.dialog_layout.addWidget(self.listWidget)
 
         # Create check/uncheck all buttons
         buttonLayout = QHBoxLayout()
@@ -43,32 +43,32 @@ class SelectDatasetLayersDialog(QDialog):
         self.uncheckAllButton.clicked.connect(self.uncheckAll)
         buttonLayout.addWidget(self.checkAllButton)
         buttonLayout.addWidget(self.uncheckAllButton)
-        self.layout.addLayout(buttonLayout)
+        self.dialog_layout.addLayout(buttonLayout)
 
         # Create OK/Cancel buttons
         self.buttonBox = QDialogButtonBox(
-            QDialogButtonBox.Ok | QDialogButtonBox.Cancel, self
+            QDialogButtonBox.StandardButton.Ok | QDialogButtonBox.StandardButton.Cancel, self
         )
         self.buttonBox.accepted.connect(self.accept)
         self.buttonBox.rejected.connect(self.reject)
 
-        self.layout.addWidget(self.buttonBox)
+        self.dialog_layout.addWidget(self.buttonBox)
 
     def checkAll(self):
         for index in range(self.listWidget.count()):
             item = self.listWidget.item(index)
-            item.setCheckState(Qt.Checked)
+            item.setCheckState(Qt.CheckState.Checked)
 
     def uncheckAll(self):
         for index in range(self.listWidget.count()):
             item = self.listWidget.item(index)
-            item.setCheckState(Qt.Unchecked)
+            item.setCheckState(Qt.CheckState.Unchecked)
 
     def selectedRequests(self):
         checked_requests = [
-            item.data(Qt.UserRole)
-            for item in self.listWidget.findItems("*", Qt.MatchWildcard)
-            if item.checkState() == Qt.Checked
+            item.data(Qt.ItemDataRole.UserRole)
+            for item in self.listWidget.findItems("*", Qt.MatchFlag.MatchWildcard)
+            if item.checkState() == Qt.CheckState.Checked
         ]
         return checked_requests
 

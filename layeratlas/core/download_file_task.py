@@ -7,7 +7,9 @@ from urllib.parse import urlparse
 
 from qgis.core import QgsTask
 
-from layeratlas.helper.logging_helper import log
+from layeratlas.helper.logging_helper import setup_logger
+
+logger = setup_logger(__name__)
 
 # Define the retry strategy
 retry_strategy = Retry(
@@ -54,7 +56,7 @@ class DownloadFileTask(QgsTask):
 
         # Check if the file already exists
         if os.path.exists(self.dest_path):
-            log(f"Skipping download - File already exists: {self.dest_path}", "INFO")
+            logger.info(f"Skipping download - File already exists: {self.dest_path}")
             return True
 
         # Download the file
@@ -79,24 +81,24 @@ class DownloadFileTask(QgsTask):
                             progress = (self.downloaded_size / self.total_size) * 100
                             self.setProgress(progress)
 
-            log(f"File downloaded successfully: {self.dest_path}", "SUCCESS")
+            logger.info(f"File downloaded successfully: {self.dest_path}")
 
             return True
 
         except requests.exceptions.RequestException as e:
-            log(f"An error occurred during download: {e}", "CRITICAL")
+            logger.error(f"An error occurred during download: {e}")
             return False
 
     def cancel(self):
-        log("Download task canceled by the user", "WARNING")
+        logger.warning("Download task canceled by the user")
         super().cancel()
 
     def finished(self, result):
         if result:
-            log("Download completed successfully", "SUCCESS")
+            logger.info("Download completed successfully")
         else:
             if os.path.exists(self.dest_path):
-                log("Removing temporary files", "INFO")
+                logger.info("Removing temporary files")
                 os.remove(self.dest_path)
 
     def parse_response_header(self) -> bool:
@@ -118,7 +120,7 @@ class DownloadFileTask(QgsTask):
             content_disposition = response.headers.get("content-disposition")
             self.total_size = int(response.headers.get("content-length", 0))
         except requests.exceptions.RequestException as e:
-            log(f"Failed to get filename from content-disposition header: {e}", "INFO")
+            logger.info(f"Failed to get filename from content-disposition header: {e}")
             return False
 
         if content_disposition:

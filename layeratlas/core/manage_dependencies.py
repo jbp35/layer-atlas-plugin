@@ -3,8 +3,11 @@ import os
 import subprocess
 import platform
 
-from qgis.PyQt.QtWidgets import QTextEdit, QMessageBox
+from qgis.PyQt.QtWidgets import QMessageBox
+from qgis.PyQt.QtCore import QT_VERSION_STR
+from layeratlas.helper.logging_helper import setup_logger
 
+logger = setup_logger(__name__)
 plugin_dir = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -14,8 +17,8 @@ def confirm_install(iface) -> bool:
 
     """
     # Detect PyQt version to show appropriate message
-    pyqt_version = detect_pyqt_version()
-    if pyqt_version == 6:
+    qt_major = QT_VERSION_STR[0]
+    if qt_major == "6":
         package_name = "PyQt6-WebEngine"
     else:
         package_name = "PyQtWebEngine"
@@ -32,32 +35,12 @@ def confirm_install(iface) -> bool:
     mbox.setDefaultButton(QMessageBox.StandardButton.Yes)
 
     def button_clicked():
-        print(mbox.clickedButton().text())
+        logger.info(mbox.clickedButton().text())
         if mbox.clickedButton().text() == "&Yes":
             install_dependencies()
             restart_qgis(iface)
 
     mbox.open(button_clicked)
-
-
-def detect_pyqt_version():
-    """
-    Detects whether PyQt5 or PyQt6 is being used in the current environment.
-
-    Returns:
-        int: 5 if PyQt5 is detected, 6 if PyQt6 is detected, None if neither is detected.
-    """
-    try:
-        import PyQt6
-
-        return 6
-    except ImportError:
-        try:
-            import PyQt5
-
-            return 5
-        except ImportError:
-            return None
 
 
 def install_dependencies():
@@ -68,27 +51,26 @@ def install_dependencies():
     import pip
 
     operating_system = platform.system()
+    qt_major = QT_VERSION_STR[0]
 
-    pyqt_version = detect_pyqt_version()
-
-    if pyqt_version == 5:
+    if qt_major == "5":
         dependency = "PyQtWebEngine"
         webengine_module = "PyQt5.QtWebEngineWidgets"
-    elif pyqt_version == 6:
+    elif qt_major == "6":
         dependency = "PyQt6-WebEngine"
         webengine_module = "PyQt6.QtWebEngineWidgets"
     else:
-        print("Unable to detect PyQt version. Defaulting to PyQt5.")
+        logger.warning("Unable to detect PyQt version. Defaulting to PyQt5.")
         dependency = "PyQtWebEngine"
         webengine_module = "PyQt5.QtWebEngineWidgets"
 
     # Check if the appropriate WebEngine module is already available
     try:
         __import__(webengine_module)
-        print("{} is already available".format(dependency))
+        logger.info("{} is already available".format(dependency))
         return
     except ImportError:
-        print("{} not available, installing {}".format(webengine_module, dependency))
+        logger.info("{} not available, installing {}".format(webengine_module, dependency))
 
         # Install the dependency based on the operating system
         if operating_system == "Darwin":
@@ -120,21 +102,3 @@ def restart_qgis(iface):
 
     if reply == QMessageBox.StandardButton.Yes:
         iface.actionExit().trigger()
-
-
-def get_html_page():
-    """
-    Loads an HTML page from a specified plugin directory and displays it in a read-only QTextEdit widget.
-
-    Returns:
-        QTextEdit: A QTextEdit widget displaying the HTML content in read-only mode.
-    """
-    readme_viewer = QTextEdit()
-    readme_viewer.setReadOnly(True)
-    readme_path = os.path.join(
-        plugin_dir, "resources", "templates", "missing_pyqtwebengine.html"
-    )
-    with open(readme_path, "r", encoding="utf-8") as file:
-        readme_viewer.setHtml(file.read())
-
-    return readme_viewer

@@ -8,7 +8,9 @@ from qgis.core import (
     QgsVectorLayer,
 )
 
-from layeratlas.helper.logging_helper import log
+from layeratlas.helper.logging_helper import setup_logger
+
+logger = setup_logger(__name__)
 
 
 def loadFile(dest_path: str, file_name: str) -> bool:
@@ -52,11 +54,11 @@ def loadFile(dest_path: str, file_name: str) -> bool:
             for layer in ordered_layers:
                 group.addLayer(layer)
 
-        log(f"Successfully loaded: {dest_path}", "SUCCESS")
+        logger.info(f"Successfully loaded: {dest_path}")
         return True
 
     except Exception as e:
-        log(f"Failed to load file: {dest_path} - {e}", "CRITICAL")
+        logger.error(f"Failed to load file: {dest_path} - {e}")
         return False
 
 
