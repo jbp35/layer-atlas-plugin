@@ -29,7 +29,6 @@ from qgis.PyQt import QtWidgets
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtCore import Qt, pyqtSignal, QUrl
 
-from layeratlas.communication.web_engine_view import WebEngineView
 from layeratlas.gui.fallback_widget import FallbackWidget
 from layeratlas.helper.logging_helper import setup_logger
 
@@ -51,9 +50,11 @@ class LayerAtlasDockWidget(QgsDockWidget):
         self.dev_mode = False
 
         logger.debug("Creating WebEngineView")
-        self.view = WebEngineView(self.iface)
 
-        if self.view is None:
+        try:
+            from layeratlas.communication.web_engine_view import WebEngineView
+            self.view = WebEngineView(self.iface)
+        except Exception as e:
             logger.warning("WebEngineView creation failed, using fallback widget")
             fallback_widget = FallbackWidget(self.iface, self)
             self.setWidget(fallback_widget)

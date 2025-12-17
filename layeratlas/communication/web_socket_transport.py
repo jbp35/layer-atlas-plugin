@@ -1,11 +1,8 @@
 from __future__ import annotations
-try: 
-    from PyQt6.QtWebChannel import QWebChannelAbstractTransport
-except ImportError:
-    from PyQt5.QtWebChannel import QWebChannelAbstractTransport
+
 
 from qgis.PyQt.QtCore import QByteArray, QJsonDocument, pyqtSlot
-
+from layeratlas.communication import QWebChannelAbstractTransport
 
 class WebSocketTransport(QWebChannelAbstractTransport):
     """QWebChannelAbstractSocket implementation using a QWebSocket internally.

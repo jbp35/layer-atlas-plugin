@@ -13,6 +13,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [1.2.0]
+
+### Added
+
+- Added QT6 support
+
 ## [1.1.0]
 
 ### Added

@@ -38,10 +38,6 @@ class FallbackWidget(QtWidgets.QWidget):
         
     def setup_ui(self):
         """Setup the user interface."""
-        from layeratlas.core.manage_dependencies import confirm_install
-        
-        confirm_install(self.iface)
-        
         self.page_layout = QtWidgets.QVBoxLayout(self)
        
         from qgis.PyQt.QtCore import QT_VERSION_STR
@@ -57,12 +53,3 @@ class FallbackWidget(QtWidgets.QWidget):
             self.fallback_view.setHtml(file.read())
         
         self.page_layout.addWidget(self.fallback_view)
-
-        # Create a button for installing dependencies
-        self.install_deps_button = QtWidgets.QPushButton(
-            "Install Dependencies", self
-        )
-        self.install_deps_button.clicked.connect(
-            lambda: confirm_install(self.iface)
-        )
-        self.page_layout.addWidget(self.install_deps_button)
