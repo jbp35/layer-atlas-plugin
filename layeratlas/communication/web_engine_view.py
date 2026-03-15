@@ -2,7 +2,7 @@ import os
 from qgis.core import QgsMapLayerType, QgsLayerDefinition
 from qgis.PyQt.QtCore import Qt
 from layeratlas.helper.logging_helper import setup_logger
-
+from layeratlas.communication import QWebEngineView
 
 logger = setup_logger(__name__)
 
@@ -15,7 +15,7 @@ class WebEngineView(QWebEngineView):
         self.setAcceptDrops(True)
         self.setContextMenuPolicy(Qt.ContextMenuPolicy.NoContextMenu)
 
-        from layeratlas.communication import QWebEngineView, QWebChannel, QWebSocketServer, QHostAddress
+        from layeratlas.communication import QWebChannel, QWebSocketServer, QHostAddress
         from layeratlas.communication.web_socket_client_wrapper import WebSocketClientWrapper
         from layeratlas.communication.communication_bus import communicationBus
 
