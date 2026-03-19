@@ -45,6 +45,7 @@ class LayerAtlasDockWidget(QgsDockWidget):
         self.setObjectName("LayerAtlasPlugin")
         self.setWindowTitle(self.tr("Layer Atlas"))
         self.setAllowedAreas(Qt.DockWidgetArea.LeftDockWidgetArea | Qt.DockWidgetArea.RightDockWidgetArea)
+        self.setMinimumWidth(300)
 
         self.contextMenuActions = []
         self.dev_mode = False
